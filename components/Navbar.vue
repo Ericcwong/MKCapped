@@ -16,7 +16,12 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item>Sign in</b-nav-item>
-          <b-nav-item href="https://discord.gg/NJDjGQb2fK">Discord</b-nav-item>
+          <!-- Discord -->
+          <b-nav-item href="https://discord.gg/NJDjGQb2fK" target="_blank">
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/91_Discord_logo_logos-24.png"
+            /><span id="discord">Discord</span>
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -30,5 +35,8 @@ export default {}
 <style>
 small {
   font-size: x-small;
+}
+#discord {
+  color: #758afa;
 }
 </style>
