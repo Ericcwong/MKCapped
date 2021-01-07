@@ -8,12 +8,17 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel:"stylesheet",
+        href:"https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap"
+      }
     ]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    "~/assets/style.css"
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -37,8 +42,13 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    'nuxtjs-darkmode-js-module',
   ],
-
+  darkmodejs:{
+    time: '1s',
+    mixColor: '#fff',
+    label: '🌓'
+  },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
