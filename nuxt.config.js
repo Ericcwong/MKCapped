@@ -42,13 +42,60 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    'nuxtjs-darkmode-js-module',
+    // 'nuxtjs-darkmode-js-module',
+    [
+      "@nuxtjs/firebase",
+      {
+        config:{
+          apiKey: "AIzaSyCTLXqFwCneCXT_e-h2tJV86Vu9TDRIDFo",
+          authDomain: "mkcapped.firebaseapp.com",
+          projectId: "mkcapped",
+          storageBucket: "mkcapped.appspot.com",
+          messagingSenderId: "1043404648742",
+          appId: "1:1043404648742:web:fe754ad6a763ac813811e7",
+          measurementId: "G-7PT45T2R3P"
+        },
+        services:{
+          auth: true,
+          firestore: {
+            enablePersistence: true
+          },
+          storage: true
+        }
+      }
+    ]
   ],
-  darkmodejs:{
-    time: '1s',
-    mixColor: '#fff',
-    label: '🌓'
-  },
+  // firebase: {
+  //   // ...
+  //   services: {
+  //     auth: {
+  //       ssr: true
+  //     }
+  //     // ...
+  //   }
+  // },
+  // pwa: {
+  //   // disable the modules you don't need
+  //   meta: false,
+  //   icon: false,
+  //   // if you omit a module key form configuration sensible defaults will be applied
+  //   // manifest: false,
+
+  //   workbox: {
+  //     importScripts: [
+  //       // ...
+  //       '/firebase-auth-sw.js'
+  //     ],
+  //     // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
+  //     // only set this true for testing and remember to always clear your browser cache in development
+  //     dev: process.env.NODE_ENV === 'development',
+  //   }
+  // },
+  // darkmodejs:{
+  //   time: '1s',
+  //   mixColor: '#fff',
+  //   label: '🌓'
+  // },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 

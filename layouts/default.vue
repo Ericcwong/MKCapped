@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <Navbar />
     <Nuxt />
   </div>
@@ -8,5 +8,9 @@
 <style>
 #app {
   font-family: "Raleway";
+}
+.app {
+  background-color: #e0e0e0;
+  height: 100vh;
 }
 </style>

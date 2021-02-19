@@ -1,7 +1,11 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title">mkcapped</h1>
+      <h1 class="title">Mkcapped</h1>
+      <p>
+        Welcome to Mkcapped, a keyboard community for new comers and
+        enthusiasts!
+      </p>
     </div>
   </div>
 </template>
@@ -10,13 +14,13 @@
 export default {}
 </script>
 
-<style>
+<style scoped>
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
 }
 </style>

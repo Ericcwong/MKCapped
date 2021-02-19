@@ -1,0 +1,59 @@
+<template>
+  <form>
+    <b-form-group class="title" label="Login:" label-for="input-1">
+      <b-form-input
+        id="email"
+        v-model="email"
+        type="email"
+        placeholder="email"
+        required
+      ></b-form-input>
+      <b-form-input
+        id="password"
+        v-model="password"
+        type="password"
+        placeholder="password"
+        required
+      ></b-form-input>
+    </b-form-group>
+
+    <Button redirect="/" style="width: 100%" name="Login" />
+    <br />
+    <br />
+    <Button redirect="" name="Forgot password?" style="font-size: 0.75rem" />
+
+    <br />
+    <br />
+    <Button
+      style="font-size: 0.75rem"
+      redirect="/user/register"
+      name="Dont have an account? Register here!"
+    />
+  </form>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    }
+  },
+}
+</script>
+
+<style scoped>
+form {
+  width: 100%;
+  padding: 20%;
+  background-color: white;
+}
+.title {
+  font-size: 1.75rem;
+}
+input {
+  height: 3rem;
+  margin-bottom: 15px;
+}
+</style>
