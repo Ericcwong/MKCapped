@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="light" variant="light">
+    <b-navbar class="navbar" toggleable="lg" type="light" variant="muted">
       <b-navbar-brand class="logo" to="/">Mkcapped</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -52,17 +52,21 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 .logo {
   font-size: 2rem;
+  color: white;
+}
+.logo:hover {
+  color: white;
 }
 .navItems {
   margin: 0 10px 0 10px;
-  color: var(--gray);
+  color: white;
   position: relative;
   text-decoration: none;
-}
-.navItems:hover {
-  color: black;
 }
 .navItems::before {
   content: "";

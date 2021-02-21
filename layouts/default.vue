@@ -10,7 +10,11 @@
   font-family: "Raleway";
 }
 .app {
-  background-color: #e0e0e0;
+  background-image: url("/version-2.4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
+}
+body {
 }
 </style>
