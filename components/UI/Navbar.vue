@@ -53,7 +53,7 @@ export default {
 
 <style scoped>
 .navbar {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .logo {
   font-size: 2rem;
