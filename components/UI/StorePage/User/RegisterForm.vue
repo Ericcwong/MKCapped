@@ -16,8 +16,10 @@
       ></b-form-input>
     </b-form-group>
     <button @click.prevent="createUserFirebase">Register</button> <br />
-    <button @click.prevent="googleSignup">google</button>
+    <!-- <button @click.prevent="googleSignup">google</button> -->
+    <button @click.prevent="googleSignup"><GoogleIcon /></button>
     <span class="error" v-if="error !== ''">{{ error }}</span>
+
     <br />
     <br />
     <Button
@@ -29,6 +31,7 @@
 </template>
 
 <script>
+import { auth, provider } from "~/plugins/firebase"
 export default {
   data() {
     return {
@@ -37,24 +40,19 @@ export default {
       error: "",
     }
   },
-  created() {
-    // console.log(this.$store)
-    // console.log(mapActions)
-  },
   methods: {
     //Through email and password
     async createUserFirebase() {
       try {
-        await this.$fire.auth
+        await auth
           .createUserWithEmailAndPassword(this.email, this.password)
-          .then(console.log("User created"))
+          .then(this.$router.push("/user/login"))
       } catch (error) {
         this.error = error
         console.log(error)
       }
     },
     googleSignup() {
-      const provider = new auth.GoogleAuthProvider()
       auth
         .signInWithPopup(provider)
         .then((result) => {
