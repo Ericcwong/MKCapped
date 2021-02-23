@@ -23,6 +23,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    "~/plugins/firebase.js"
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -43,27 +44,27 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     // 'nuxtjs-darkmode-js-module',
-    [
-      "@nuxtjs/firebase",
-      {
-        config:{
-          apiKey: "AIzaSyCTLXqFwCneCXT_e-h2tJV86Vu9TDRIDFo",
-          authDomain: "mkcapped.firebaseapp.com",
-          projectId: "mkcapped",
-          storageBucket: "mkcapped.appspot.com",
-          messagingSenderId: "1043404648742",
-          appId: "1:1043404648742:web:fe754ad6a763ac813811e7",
-          measurementId: "G-7PT45T2R3P"
-        },
-        services:{
-          auth: true,
-          firestore: {
-            enablePersistence: true
-          },
-          storage: true
-        }
-      }
-    ]
+    // [
+    //   "@nuxtjs/firebase",
+    //   {
+    //     config:{
+    //       apiKey: "AIzaSyCTLXqFwCneCXT_e-h2tJV86Vu9TDRIDFo",
+    //       authDomain: "mkcapped.firebaseapp.com",
+    //       projectId: "mkcapped",
+    //       storageBucket: "mkcapped.appspot.com",
+    //       messagingSenderId: "1043404648742",
+    //       appId: "1:1043404648742:web:fe754ad6a763ac813811e7",
+    //       measurementId: "G-7PT45T2R3P"
+    //     },
+    //     services:{
+    //       auth: true,
+    //       firestore: {
+    //         enablePersistence: true
+    //       },
+    //       storage: true
+    //     }
+    //   }
+    // ]
   ],
   // firebase: {
   //   // ...
