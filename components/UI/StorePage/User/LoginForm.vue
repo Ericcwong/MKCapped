@@ -16,19 +16,23 @@
         required
       ></b-form-input>
     </b-form-group>
-
-    <Button redirect="/" style="width: 100%" name="Login" />
-    <br />
-    <br />
-    <Button redirect="" name="Forgot password?" style="font-size: 0.75rem" />
-
-    <br />
-    <br />
-    <Button
-      style="font-size: 0.75rem"
-      redirect="/user/register"
-      name="Dont have an account? Register here!"
-    />
+    <div class="login-buttons">
+      <Button redirect="/" style="width: 100%" name="Login" />
+      <br />
+      <br />
+      <p>Login through your Google account</p>
+      <GoogleSignIn />
+      <br />
+      <br />
+      <Button redirect="" name="Forgot password?" style="font-size: 0.75rem" />
+      <br />
+      <br />
+      <Button
+        style="font-size: 0.75rem"
+        redirect="/user/register"
+        name="Dont have an account? Register here!"
+      />
+    </div>
   </form>
 </template>
 
@@ -55,5 +59,8 @@ form {
 input {
   height: 3rem;
   margin-bottom: 15px;
+}
+.login-buttons {
+  margin-bottom: 10px;
 }
 </style>

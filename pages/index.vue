@@ -24,8 +24,7 @@ export default {}
   margin-top: 5%;
   text-align: center;
   vertical-align: middle;
-  background-color: rgba(146, 146, 146, 0.781);
-  font-size: 2rem;
+  font-size: 3rem;
   width: 65%;
   height: 10%;
 }

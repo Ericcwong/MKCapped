@@ -16,8 +16,9 @@
       ></b-form-input>
     </b-form-group>
     <button @click.prevent="createUserFirebase">Register</button> <br />
-    <!-- <button @click.prevent="googleSignup">google</button> -->
-    <button @click.prevent="googleSignup"><GoogleIcon /></button>
+    <br />
+    <p>Sign in through your Google account</p>
+    <GoogleSignIn />
     <span class="error" v-if="error !== ''">{{ error }}</span>
 
     <br />
@@ -32,7 +33,9 @@
 
 <script>
 import { auth, provider } from "~/plugins/firebase"
+import GoogleSignIn from "./GoogleSignIn.vue"
 export default {
+  components: { GoogleSignIn },
   data() {
     return {
       email: "",
@@ -51,30 +54,6 @@ export default {
         this.error = error
         console.log(error)
       }
-    },
-    googleSignup() {
-      auth
-        .signInWithPopup(provider)
-        .then((result) => {
-          /** @type {firebase.auth.OAuthCredential} */
-          var credential = result.credential
-
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          var token = credential.accessToken
-          // The signed-in user info.
-          var user = result.user
-          // ...
-        })
-        .catch((error) => {
-          // Handle Errors here.
-          var errorCode = error.code
-          var errorMessage = error.message
-          // The email of the user's account used.
-          var email = error.email
-          // The firebase.auth.AuthCredential type that was used.
-          var credential = error.credential
-          // ...
-        })
     },
   },
 }
