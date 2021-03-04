@@ -65,7 +65,6 @@ export default {}
 
 <style scoped>
 svg {
-  width: 30px;
-  height: 30px;
+  width: 20px;
 }
 </style>

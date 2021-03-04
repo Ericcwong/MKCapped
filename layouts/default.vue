@@ -10,7 +10,7 @@
   font-family: "Raleway";
 }
 .app {
-  background-image: linear-gradient(0deg, #30303088, #00000085 50%),
+  background-image: linear-gradient(0deg, #30303088, #000000cb 50%),
     url("/version-2.4.png");
   background-size: cover;
   background-repeat: no-repeat;

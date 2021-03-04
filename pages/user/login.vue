@@ -42,9 +42,18 @@ export default {}
 .buttonGroup {
   display: flex;
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 990px) {
   .login {
-    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 90vh;
+  }
+  .loginForm {
+    width: 100%;
+    height: 100%;
+  }
+  .image {
+    visibility: hidden;
   }
 }
 </style>

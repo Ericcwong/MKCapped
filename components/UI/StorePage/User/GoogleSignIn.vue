@@ -1,5 +1,9 @@
 <template>
-  <button @click.prevent="googleSignup"><GoogleIcon /></button>
+  <div class="googleAccount">
+    <button @click.prevent="googleSignup">
+      <GoogleIcon /> Continue with Google
+    </button>
+  </div>
 </template>
 
 
@@ -39,7 +43,9 @@ export default {
 
 <style scoped>
 button {
-  border: none;
+  border: 1px solid gray;
+  border-radius: 20px;
+  padding: 10px;
   background-color: white;
 }
 </style>

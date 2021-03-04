@@ -22,16 +22,6 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      storeName: "",
-      storeLogo: "",
-      storeURL: "",
-    }
-  },
-  methods: {},
-}
 </script>
 
 <style>

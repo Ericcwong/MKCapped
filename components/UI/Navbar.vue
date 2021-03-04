@@ -1,27 +1,27 @@
 <template>
   <div>
-    <b-navbar class="navbar" toggleable="lg" type="light" variant="muted">
+    <b-navbar class="navbar" toggleable="lg" type="dark" variant="muted">
       <b-navbar-brand class="logo" to="/">Mkcapped</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
+      <b-collapse id="nav-collapse" v-model="showCollapse" is-nav>
         <b-navbar-nav>
-          <nuxt-link class="navItems" to="/stores">Stores</nuxt-link>
-          <nuxt-link class="navItems" to="/resources">Resources</nuxt-link>
-          <nuxt-link class="navItems" to="/community">Community</nuxt-link>
-          <nuxt-link class="navItems" to="/about">About us</nuxt-link>
+          <nuxt-link class="nav-items" to="/stores">Stores</nuxt-link>
+          <nuxt-link class="nav-items" to="/resources">Resources</nuxt-link>
+          <nuxt-link class="nav-items" to="/community">Community</nuxt-link>
+          <nuxt-link class="nav-items" to="/about">About us</nuxt-link>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <nuxt-link class="navItems" to="/user/login">Login</nuxt-link>
-          <nuxt-link class="navItems" to="/user/register">Register</nuxt-link>
-          <nuxt-link class="navItems" v-if="status" to="/">Logout</nuxt-link>
+          <nuxt-link class="nav-items" to="/user/login">Login</nuxt-link>
+          <nuxt-link class="nav-items" to="/user/register">Register</nuxt-link>
+          <nuxt-link class="nav-items" v-if="status" to="/">Logout</nuxt-link>
 
           <!-- Discord -->
           <a
-            class="navItems"
+            class="nav-items"
             target="_blank"
             href="https://discord.gg/NJDjGQb2fK"
           >
@@ -40,7 +40,14 @@ export default {
   data() {
     return {
       status: false,
+      showCollapse: false,
     }
+  },
+  // Mobile navigation: The drop down will close when a user changes to a different page
+  watch: {
+    $route() {
+      this.showCollapse = false
+    },
   },
   methods: {
     getUser() {
@@ -62,13 +69,13 @@ export default {
 .logo:hover {
   color: white;
 }
-.navItems {
+.nav-items {
   margin: 0 10px 0 10px;
   color: white;
   position: relative;
   text-decoration: none;
 }
-.navItems::before {
+.nav-items::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -80,7 +87,7 @@ export default {
   transform: scaleX(0);
   transition: all 0.3s ease-in-out 0s;
 }
-.navItems:hover::before {
+.nav-items:hover::before {
   visibility: visible;
   transform: scaleX(1);
 }
@@ -89,5 +96,13 @@ small {
 }
 #discord {
   color: #758afa;
+}
+@media only screen and (max-width: 990px) {
+  #nav-collapse {
+    font-size: 1.4rem;
+  }
+  .nav-items {
+    border-bottom: 0.5px solid lightgray;
+  }
 }
 </style>

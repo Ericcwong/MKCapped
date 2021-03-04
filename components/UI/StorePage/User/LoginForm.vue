@@ -20,7 +20,6 @@
       <Button redirect="/" style="width: 100%" name="Login" />
       <br />
       <br />
-      <p>Login through your Google account</p>
       <GoogleSignIn />
       <br />
       <br />

@@ -1,6 +1,7 @@
 import firebase from "firebase/app"
 import "firebase/auth"
 import "firebase/firestore"
+import "firebase/functions"
 const firebaseConfig = {
   apiKey: "AIzaSyCTLXqFwCneCXT_e-h2tJV86Vu9TDRIDFo",
   authDomain: "mkcapped.firebaseapp.com",
@@ -18,3 +19,4 @@ if (!firebase.apps.length) {
 export const db = firebase.firestore()
 export const auth = firebase.auth()
 export const provider = new firebase.auth.GoogleAuthProvider()
+export const functions = firebase.functions();
