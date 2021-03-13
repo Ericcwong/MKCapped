@@ -1,25 +1,26 @@
-const state = () => ({
-    counter: 0
-})
+// const state = () => ({
+//     user: {},
+//     userSignUpStatus: ""
+// })
 
-const mutations = {
-    INCREMENT(state){
-        state.counter += 1
-        console.log(state.counter)
-    }
-}
+// const mutations = {
+//     updateUserStatus(state){
+//         state.userSignUpStatus = "Sign up Successful!"
+//         console.log(state.userSignUpStatus)
+//     }
+// }
 
-const actions = {
+// const actions = {
 
-}
+// }
 
-const getters = {
+// const getters = {
 
-}
+// }
 
-export default {
-    state,
-    mutations,
-    actions,
-    getters
-}
+// export default {
+//     state,
+//     mutations,
+//     actions,
+//     getters
+// }

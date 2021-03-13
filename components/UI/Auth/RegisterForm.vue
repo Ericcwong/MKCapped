@@ -17,7 +17,10 @@
           autocomplete="off"
         ></b-form-input>
       </b-form-group>
-      <Button @click.prevent="createUserFirebase">Register</Button> <br />
+      <button class="u-button" @click.prevent="createUserFirebase">
+        Register
+      </button>
+      <br />
       <br />
     </form>
     <!-- Google Sign in option -->
@@ -27,7 +30,7 @@
     <br />
     <br />
     <!-- Button redirect to login page -->
-    <Button
+    <NavButton
       style="font-size: 0.75rem"
       redirect="/user/login"
       name="Have an account? Login here!"
@@ -53,16 +56,20 @@ export default {
       try {
         await auth
           .createUserWithEmailAndPassword(this.email, this.password)
-          .then(this.$router.push("/user/login"))
+          .then((res) => {
+            if (res.additionalUserInfo.isNewUser === true) {
+              this.$store.commit("updateUserStatus", { module: "auth" })
+              this.$router.push("/user/login")
+            }
+          })
       } catch (error) {
-        this.error = error
+        this.error = error.message
         console.log(error)
       }
     },
   },
 }
 </script>
-
 <style scoped>
 .registration-component {
   width: 100%;

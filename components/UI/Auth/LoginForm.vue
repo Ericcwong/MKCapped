@@ -1,5 +1,6 @@
 <template>
   <form>
+    {{ this.$store.state.auth.userSignUpStatus }}
     <b-form-group class="title" label="Login:" label-for="input-1">
       <b-form-input
         id="email"
@@ -17,16 +18,20 @@
       ></b-form-input>
     </b-form-group>
     <div class="login-buttons">
-      <Button redirect="/" style="width: 100%" name="Login" />
+      <NavButton redirect="/" style="width: 100%" name="Login" />
       <br />
       <br />
       <GoogleSignIn />
       <br />
       <br />
-      <Button redirect="" name="Forgot password?" style="font-size: 0.75rem" />
+      <NavButton
+        redirect=""
+        name="Forgot password?"
+        style="font-size: 0.75rem"
+      />
       <br />
       <br />
-      <Button
+      <NavButton
         style="font-size: 0.75rem"
         redirect="/user/register"
         name="Dont have an account? Register here!"
@@ -36,6 +41,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
 export default {
   data() {
     return {
