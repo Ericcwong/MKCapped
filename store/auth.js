@@ -1,26 +1,19 @@
-const state = () => ({
+export const state = () => ({
     user: {},
     userSignUpStatus: ""
 })
-
-const mutations = {
+ 
+export const mutations = {
     updateUserStatus(state){
         state.userSignUpStatus = "Sign up Successful!"
         console.log(state.userSignUpStatus)
     }
 }
 
-const actions = {
+export const actions = {
 
 }
 
-const getters = {
+export const getters = {
 
-}
-
-export default {
-    state,
-    mutations,
-    actions,
-    getters
 }

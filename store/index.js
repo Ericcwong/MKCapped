@@ -1,26 +1,17 @@
-// const state = () => ({
-//     user: {},
-//     userSignUpStatus: ""
-// })
+export const state = () => ({
+    
 
-// const mutations = {
-//     updateUserStatus(state){
-//         state.userSignUpStatus = "Sign up Successful!"
-//         console.log(state.userSignUpStatus)
-//     }
-// }
+})
 
-// const actions = {
+export const mutations = {
 
-// }
+}
 
-// const getters = {
+export const actions = {
 
-// }
+}
 
-// export default {
-//     state,
-//     mutations,
-//     actions,
-//     getters
-// }
+export const getters = {
+
+}
+

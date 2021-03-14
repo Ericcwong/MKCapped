@@ -58,7 +58,7 @@ export default {
           .createUserWithEmailAndPassword(this.email, this.password)
           .then((res) => {
             if (res.additionalUserInfo.isNewUser === true) {
-              this.$store.commit("updateUserStatus", { module: "auth" })
+              this.$store.commit("auth/updateUserStatus")
               this.$router.push("/user/login")
             }
           })
