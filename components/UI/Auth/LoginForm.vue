@@ -18,7 +18,7 @@
       ></b-form-input>
     </b-form-group>
     <div class="login-buttons">
-      <NavButton redirect="/" style="width: 100%" name="Login" />
+      <button class="u-button" @click.prevent="login">Login</button>
       <br />
       <br />
       <GoogleSignIn />
@@ -41,13 +41,18 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { auth } from "~/plugins/firebase"
 export default {
   data() {
     return {
       email: "",
       password: "",
     }
+  },
+  methods: {
+    login() {
+      this.$store.dispatch("auth/getUserByEmail", [this.email, this.password])
+    },
   },
 }
 </script>
