@@ -16,6 +16,7 @@ export default {
         .signInWithPopup(provider)
         .then((result) => {
           /** @type {firebase.auth.OAuthCredential} */
+          this.$store.commit("auth/getUser", result.user)
           var credential = result.credential
 
           // This gives you a Google Access Token. You can use it to access the Google API.

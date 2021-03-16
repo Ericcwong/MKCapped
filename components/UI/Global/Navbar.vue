@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
 export default {
   data() {
     return {
@@ -43,18 +44,18 @@ export default {
       showCollapse: false,
     }
   },
+  computed: {
+    user() {
+      return this.$store.state.auth.user.displayName
+    },
+  },
   // Mobile navigation: The drop down will close when a user changes to a different page
   watch: {
     $route() {
       this.showCollapse = false
     },
   },
-  methods: {
-    getUser() {
-      let status = this.$store.state.user.isLoggedIn
-      this.status = status
-    },
-  },
+  methods: {},
 }
 </script>
 

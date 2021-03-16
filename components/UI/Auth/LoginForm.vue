@@ -18,7 +18,7 @@
       ></b-form-input>
     </b-form-group>
     <div class="login-buttons">
-      <button class="u-button" @click.prevent="login">Login</button>
+      <button class="u-button" @click.prevent="loginUser">Login</button>
       <br />
       <br />
       <GoogleSignIn />
@@ -50,8 +50,11 @@ export default {
     }
   },
   methods: {
-    login() {
-      this.$store.dispatch("auth/getUserByEmail", [this.email, this.password])
+    loginUser() {
+      this.$store.dispatch("auth/getUserByEmail", {
+        email: this.email,
+        password: this.password,
+      })
     },
   },
 }
