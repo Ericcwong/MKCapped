@@ -2,7 +2,11 @@ import { auth } from "~/plugins/firebase"
 
 export const state = () => ({
     user: {},
-    userSignUpStatus: ""
+    userSignUpStatus: "",
+    error:{
+        errorCode: null,
+        errorMessage: null
+    }
 })
  
 export const mutations = {
@@ -11,24 +15,30 @@ export const mutations = {
         console.log(state.userSignUpStatus)
     },
     getUser(state, payload){
-        console.log(payload)
-        state.user = payload
+        state.user = JSON.parse(JSON.stringify(payload))
+    },
+    getUserError(state, payload){
+        console.log(payload.errorCode)
+        console.log(payload.errorMessage)
+        state.error.errorCode = payload.errorCode;
+        state.error.errorMessage = payload.errorMessage;
     }
+
 }
 
 export const actions = {
     async getUserByEmail({commit}, payload){
             try {
-                console.log(payload)
               await auth
                 .signInWithEmailAndPassword(payload[0],payload[1])
                 .then((response) => {
-                  console.log(response)
+                  commit("getUser", response.user)
                 })
             } catch (error) {
-                console.log(error)
               let errorCode = error.code
               let errorMessage = error.message
+              commit("getUserError", {errorCode, errorMessage})
+
             }
     }
 
