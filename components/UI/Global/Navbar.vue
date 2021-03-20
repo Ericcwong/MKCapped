@@ -15,9 +15,16 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <nuxt-link class="nav-items" to="/user/login">Login</nuxt-link>
-          <nuxt-link class="nav-items" to="/user/register">Register</nuxt-link>
-          <nuxt-link class="nav-items" v-if="status" to="/">Logout</nuxt-link>
+          <nuxt-link v-if="user === null" class="nav-items" to="/user/login"
+            >Login</nuxt-link
+          >
+          <nuxt-link v-if="user === null" class="nav-items" to="/user/register"
+            >Register</nuxt-link
+          >
+
+          <button class="nav-items" v-if="user" @click="signOut" to="/">
+            Logout
+          </button>
 
           <!-- Discord -->
           <a
@@ -46,7 +53,7 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.state.auth.user.displayName
+      return this.$store.state.auth.user
     },
   },
   // Mobile navigation: The drop down will close when a user changes to a different page
@@ -55,7 +62,11 @@ export default {
       this.showCollapse = false
     },
   },
-  methods: {},
+  methods: {
+    signOut() {
+      this.$store.dispatch("auth/signOutUser")
+    },
+  },
 }
 </script>
 
