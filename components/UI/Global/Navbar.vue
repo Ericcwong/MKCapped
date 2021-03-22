@@ -21,7 +21,7 @@
           <nuxt-link v-if="user === null" class="nav-items" to="/user/register"
             >Register</nuxt-link
           >
-
+          <span class="user-name">Welcome, {{ user.displayName }}</span>
           <button
             class="nav-items sign-out"
             v-if="user !== null"
@@ -90,6 +90,9 @@ export default {
   color: white;
   position: relative;
   text-decoration: none;
+}
+.user-name {
+  color: white;
 }
 .nav-items.sign-out {
   text-align: left;
