@@ -22,7 +22,13 @@
             >Register</nuxt-link
           >
 
-          <button class="nav-items" @click="signOut" to="/">Logout</button>
+          <button
+            class="nav-items sign-out"
+            v-if="user !== null"
+            @click.prevent="signOut"
+          >
+            Logout
+          </button>
 
           <!-- Discord -->
           <a
@@ -84,6 +90,9 @@ export default {
   color: white;
   position: relative;
   text-decoration: none;
+}
+.nav-items.sign-out {
+  text-align: left;
 }
 .nav-items::before {
   content: "";
