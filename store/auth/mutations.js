@@ -19,9 +19,6 @@ const mutations = {
     },
     //End of login user functions.
     //Start of sign out user function.
-    signOut(state){
-      state.user = null
-    },
 }
 
 export default mutations

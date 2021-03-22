@@ -43,12 +43,9 @@ const actions = {
       },
     //End of register user functions
     //Start of sign out user functions
-    async signOutUser({commit}){
+    async signOutUser(){
       try{
-        await auth.signOut().then(()=>{
-          alert("Sign out success, see you next time!")
-          commit("signOut")
-        })
+        await auth.signOut()
       }catch(error){
         console.log(error)
       }

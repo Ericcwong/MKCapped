@@ -22,9 +22,7 @@
             >Register</nuxt-link
           >
 
-          <button class="nav-items" v-if="user" @click="signOut" to="/">
-            Logout
-          </button>
+          <button class="nav-items" @click="signOut" to="/">Logout</button>
 
           <!-- Discord -->
           <a
