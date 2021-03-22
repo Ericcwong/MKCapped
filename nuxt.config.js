@@ -46,33 +46,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    [
-      '@nuxtjs/firebase',
-      {
-        config:{
-          apiKey: "AIzaSyCTLXqFwCneCXT_e-h2tJV86Vu9TDRIDFo",
-          authDomain: "mkcapped.firebaseapp.com",
-          projectId: "mkcapped",
-          storageBucket: "mkcapped.appspot.com",
-          messagingSenderId: "1043404648742",
-          appId: "1:1043404648742:web:fe754ad6a763ac813811e7",
-          measurementId: "G-7PT45T2R3P",
-        },
-        services:{
-          auth: true,
-          firestore: true,
-          functions: true,
-        },
-        auth:{
-          initialize: {
-            onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
-            onAuthStateChangedAction: 'onAuthStateChangedAction',
-            subscribeManually: false
-          },
-          ssr: true
-        }
-      }
-    ]
+
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -83,8 +57,5 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    publicPath: "/public/",
-    vendor: ['isomorphic-fetch'],
-    extractCSS: true
   }
 }
