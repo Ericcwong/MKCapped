@@ -21,7 +21,9 @@
           <nuxt-link v-if="user === null" class="nav-items" to="/user/register"
             >Register</nuxt-link
           >
-          <span class="user-name">Welcome, {{ user.displayName }}</span>
+          <!-- <p v-if="displayName !== null" class="user-name">
+            Welcome, {{ displayName }}
+          </p> -->
           <button
             class="nav-items sign-out"
             v-if="user !== null"
@@ -47,7 +49,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
 export default {
   data() {
     return {
@@ -58,6 +59,9 @@ export default {
   computed: {
     user() {
       return this.$store.state.auth.user
+    },
+    displayName() {
+      return this.$store.state.auth.user.displayName
     },
   },
   // Mobile navigation: The drop down will close when a user changes to a different page
