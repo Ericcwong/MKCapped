@@ -68,7 +68,8 @@ export default {
             onAuthStateChangedMutation: 'ON_AUTH_STATE_CHANGED_MUTATION',
             onAuthStateChangedAction: 'onAuthStateChangedAction',
             subscribeManually: false
-          }
+          },
+          ssr: true
         }
       }
     ]
