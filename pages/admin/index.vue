@@ -4,7 +4,6 @@
       <input type="email" placeholder="User email" v-model="adminEmail" />
       <button @click.prevent="addAdmin">Add Admin</button>
     </form>
-    <button @click="addCounter">add 1</button>
   </div>
 </template>
 
@@ -12,6 +11,7 @@
 import { mapMutations } from "vuex"
 import { functions } from "~/plugins/firebase"
 export default {
+  middleware: "router-guard",
   data() {
     return {
       adminEmail: "",
@@ -25,9 +25,6 @@ export default {
         console.log(results)
       })
     },
-    async addCounter() {
-      await this.$store.commit("INCREMENT")
-    },
   },
 }
 </script>
@@ -36,5 +33,8 @@ export default {
 .container {
   background: white;
   height: 100vh;
+}
+button {
+  border: 1px black solid;
 }
 </style>

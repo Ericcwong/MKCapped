@@ -6,12 +6,17 @@ export default (context) => {
   const { store } = context
 
   auth.onAuthStateChanged((user) => {
-    if (!user) {
+    if (user) {
+      console.log(user)
+      user.getIdTokenResult().then(idTokenResult =>{
+        console.log(idTokenResult.claims.admin)
+        user.admin = idTokenResult.claims.admin 
+      })
       //   console.log("User logged out")
-      store.commit("auth/setUser", null)
+      store.commit("auth/setUser", user)
     } else {
       //   console.log("user logged in: ", user)
-      store.commit("auth/setUser", user)
+      store.commit("auth/setUser", null)
     }
   })
 }

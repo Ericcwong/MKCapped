@@ -3,7 +3,9 @@
     <v-carousel cycle height="500" hide-delimiter-background>
       <v-carousel-item v-for="(item, i) in items" :src="item.src" :key="i">
         <v-row class="fill-height">
-          <div class="display-3">{{ item.title }}</div>
+          <div class="display-3">
+            <div class="display-3-text">{{ item.title }}</div>
+          </div>
         </v-row>
       </v-carousel-item>
     </v-carousel>
@@ -41,9 +43,20 @@ export default {
 <style scoped>
 .fill-height {
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 .display-3 {
   position: absolute;
-  background: black;
+  bottom: 0;
+  right: 0;
+  margin-right: 30px;
+  background: rgba(65, 65, 65, 0.767);
+  font-size: 3rem !important;
+}
+@media only screen and (max-width: 400px) {
+  .display-3 {
+    font-size: 2rem !important;
+  }
 }
 </style>
