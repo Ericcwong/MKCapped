@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-carousel cycle height="500" hide-delimiter-background>
       <v-carousel-item v-for="(item, i) in items" :src="item.src" :key="i">
-        <v-row class="fill-height" align="center" justify="center">
+        <v-row class="fill-height">
           <div class="display-3">{{ item.title }}</div>
         </v-row>
       </v-carousel-item>
@@ -39,7 +39,11 @@ export default {
 </script>
 
 <style scoped>
+.fill-height {
+  position: relative;
+}
 .display-3 {
+  position: absolute;
   background: black;
 }
 </style>
