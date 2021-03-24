@@ -1,7 +1,8 @@
 const getters = {
-    isAdmin(state){
-        console.log(state.user.admin)
-        return state.user.admin
+    isAdmin: (state) => {
+        console.log(state.user)
+        return state.user
     }
 }
+
 export default getters
