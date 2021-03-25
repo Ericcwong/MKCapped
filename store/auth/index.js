@@ -10,3 +10,9 @@ export const state = () => ({
  
 
 
+export const getters = {
+    isAdmin(state) {
+        return state.user
+    }
+}
+

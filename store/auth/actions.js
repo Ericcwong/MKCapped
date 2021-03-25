@@ -49,11 +49,6 @@ const actions = {
       console.log(error)
     }
   },
-  nuxtServerInit({commit},{req}){
-    if(req.session.user){
-      commit("setUser", req.session.user)
-    }
-  }
 }
 
 export default actions

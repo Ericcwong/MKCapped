@@ -1,7 +1,6 @@
 const mutations = {
   //Global user data
   setUser(state, payload) {
-    console.log(payload)
     state.user = JSON.parse(JSON.stringify(payload))
   },
   //Start of login user functions.
