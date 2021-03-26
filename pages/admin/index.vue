@@ -11,7 +11,6 @@
 import { mapMutations } from "vuex"
 import { functions } from "~/plugins/firebase"
 export default {
-  middleware: "router-guard",
   data() {
     return {
       adminEmail: "",

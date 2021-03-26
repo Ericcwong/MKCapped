@@ -1,14 +1,15 @@
 import { auth } from "~/plugins/firebase"
+
 const actions = {
   //Start of login user functions
   async getUserByEmail({ commit }, payload) {
     try {
       await auth
-        .signInWithEmailAndPassword(payload.email, payload.password)
-        .then((response) => {
-          console.log(response)
-          commit("setUser", response.user)
-          this.$router.push("/")
+        .signInWithEmailAndPassword(payload.email, payload.password).then((response) =>{
+          console.log(response.user)
+          let userEmail = response.user.email
+          let userRole = response.user.admin
+          commit("setUser",{userEmail, userRole})
         })
     } catch (error) {
       let errorCode = error.code
@@ -41,10 +42,11 @@ const actions = {
   },
   //End of register user functions
   //Start of sign out user functions
-  async signOutUser() {
+  async signOutUser({commit}) {
     try {
       console.log("signed out")
       await auth.signOut()
+      commit("setUser", null)
     } catch (error) {
       console.log(error)
     }

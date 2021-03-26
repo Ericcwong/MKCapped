@@ -2,6 +2,9 @@ const mutations = {
   //Global user data
   setUser(state, payload) {
     state.user = JSON.parse(JSON.stringify(payload))
+    if(payload.admin === true){
+      state.user.admin === payload.admin
+    }
   },
   //Start of login user functions.
   updateUserStatus(state) {

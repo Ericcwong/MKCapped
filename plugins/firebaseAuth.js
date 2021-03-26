@@ -9,11 +9,16 @@ export default (context) => {
     if (user) {
       user.getIdTokenResult().then(idTokenResult =>{
         user.admin = idTokenResult.claims.admin
-        store.commit("auth/setUser", user)
+        //Passes only email and role to Vuex so it doesn't cause an infinite loop of errors
+        console.log(user)
+        let userEmail = user.email
+        let userRole = user.admin
+        store.commit("auth/setUser", {userEmail, userRole})
+        console.log(user)
       })
       
-    } else {
-      //   console.log("user logged in: ", user)
+    }
+    else{
       store.commit("auth/setUser", null)
     }
   })
