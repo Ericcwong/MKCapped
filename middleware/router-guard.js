@@ -1,10 +1,7 @@
-export default async function (context){
-    const {store, route, redirect } = context
-    const user = store.state.auth.user
-    console.log(user)
-    const blockedRoute = /\/admin\/*/g;
-    // console.log(context)
-    // if(!user && route.path.match(blockedRoute)){
-    //     redirect("/")
-    // }
-}
+// export default async function( {store, route, redirect }){
+//     console.log(store.state.auth.user)
+//     // if(!store.state.auth.user){
+//     //     return redirect("/")
+//     // }
+
+// }

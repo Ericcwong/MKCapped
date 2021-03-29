@@ -46,11 +46,12 @@ const actions = {
     try {
       console.log("signed out")
       await auth.signOut()
-      commit("setUser", null)
     } catch (error) {
       console.log(error)
     }
   },
+  //End of sign out user functions
+
 }
 
 export default actions

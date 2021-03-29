@@ -24,7 +24,7 @@ export default {
   plugins: ["~/plugins/firebase.js", "~/plugins/firebaseAuth.js"],
   // Router
   router:{
-    middleware: ["router-guard"]
+    // middleware: ["router-guard"]
   },
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,

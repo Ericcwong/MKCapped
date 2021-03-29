@@ -18,8 +18,8 @@ export default (context) => {
       })
       
     }
-    else{
-      store.commit("auth/setUser", null)
+    if(!user){
+      store.commit("auth/clearUser")
     }
   })
 }

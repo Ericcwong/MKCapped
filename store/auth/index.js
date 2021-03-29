@@ -1,16 +1,13 @@
 import { auth } from "~/plugins/firebase"
 
 export const state = () => ({
-    user: {
-        admin: false
-    },
+    user: null,
     userSignUpStatus: "",
     error:{
         errorCode: null,
         errorMessage: null
     }
 })
- 
 
 
 export const getters = {

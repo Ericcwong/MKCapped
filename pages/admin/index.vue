@@ -8,9 +8,11 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex"
 import { functions } from "~/plugins/firebase"
 export default {
+  middleware({ store, redirect }) {
+    console.log(store.state)
+  },
   data() {
     return {
       adminEmail: "",
