@@ -1,16 +1,20 @@
 const mutations = {
   //Global user data
   setUser(state, payload) {
-    state.user = JSON.parse(JSON.stringify(payload))
-    if(payload.admin){
-      state.user.admin === payload.admin
-    }else{
-      return
-    }
+    console.log(payload)
+    const email = payload.email
+    const uid = payload.uid
+    const admin = payload.admin
+    state.user = {email, uid, admin}
+    // if(payload.admin){
+      // state.user.admin === payload.admin
+    // }else{
+      // return
+    // }
   },
-  // clearUser(state){
-  //   state.user = null
-  // },
+  clearUser(state){
+    state.user = null
+  },
   //Start of login user functions.
   updateUserStatus(state) {
     state.userSignUpStatus = "Sign up Successful!"

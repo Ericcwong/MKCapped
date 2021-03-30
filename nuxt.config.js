@@ -21,7 +21,7 @@ export default {
   css: ["~/assets/style.css"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ["~/plugins/firebase.js", "~/plugins/firebaseAuth.js"],
+  plugins: ["~/plugins/firebase.js", "~/plugins/firebaseAuth.js", '~/plugins/persistedState.client.js' ],
   // Router
   router:{
     // middleware: ["router-guard"]
@@ -56,5 +56,12 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true
-  }
+  },
+  // publicRuntimeConfig:{
+  //   test1: "public",
+  //   test2: "public"
+  // },
+  // privateRuntimeConfig:{
+  //   test2: "private"
+  // }
 }

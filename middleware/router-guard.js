@@ -1,7 +1,8 @@
-// export default async function( {store, route, redirect }){
-//     console.log(store.state.auth.user)
-//     // if(!store.state.auth.user){
-//     //     return redirect("/")
-//     // }
+export default async function( {store, route, redirect }){
+    const user = store.getters.isAdmin
+    // console.log(user)
+    // if(!store.state.auth.user){
+    //     return redirect("/")
+    // }
 
-// }
+}

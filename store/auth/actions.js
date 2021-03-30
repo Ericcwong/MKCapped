@@ -7,9 +7,7 @@ const actions = {
       await auth
         .signInWithEmailAndPassword(payload.email, payload.password).then((response) =>{
           console.log(response.user)
-          let userEmail = response.user.email
-          let userRole = response.user.admin
-          commit("setUser",{userEmail, userRole})
+          commit("setUser", response.user)
         })
     } catch (error) {
       let errorCode = error.code

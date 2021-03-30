@@ -10,9 +10,7 @@
 <script>
 import { functions } from "~/plugins/firebase"
 export default {
-  middleware({ store, redirect }) {
-    console.log(store.state)
-  },
+  middleware: "router-guard",
   data() {
     return {
       adminEmail: "",
