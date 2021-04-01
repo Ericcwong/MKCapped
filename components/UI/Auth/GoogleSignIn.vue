@@ -8,11 +8,10 @@
 
 
 <script>
-import { auth, provider } from "~/plugins/firebase"
 export default {
   methods: {
     googleSignup() {
-      auth
+      $this.fire.auth
         .signInWithPopup(provider)
         .then((result) => {
           /** @type {firebase.auth.OAuthCredential} */

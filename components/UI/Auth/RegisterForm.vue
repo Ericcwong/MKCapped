@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import { auth, provider } from "~/plugins/firebase"
 import GoogleSignIn from "./GoogleSignIn.vue"
 export default {
   components: { GoogleSignIn },

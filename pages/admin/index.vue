@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import { functions } from "~/plugins/firebase"
 export default {
   middleware: "router-guard",
   data() {
@@ -19,7 +18,7 @@ export default {
   methods: {
     addAdmin() {
       const adminForm = this.adminEmail
-      const addAdminRole = functions.httpsCallable("addAdminRole")
+      const addAdminRole = this.$fire.functions.httpsCallable("addAdminRole")
       addAdminRole({ email: adminForm }).then((results) => {
         console.log(results)
       })
