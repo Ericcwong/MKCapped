@@ -11,7 +11,7 @@
 export default {
   methods: {
     googleSignup() {
-      $this.fire.auth
+      this.$fire.auth
         .signInWithPopup(provider)
         .then((result) => {
           /** @type {firebase.auth.OAuthCredential} */
@@ -44,7 +44,7 @@ export default {
 <style scoped>
 button {
   border: 1px solid gray;
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px;
   background-color: white;
 }
