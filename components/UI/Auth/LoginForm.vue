@@ -17,31 +17,43 @@
         required
       ></b-form-input>
     </b-form-group>
+    <div class="errors">{{ errorCode }}</div>
+
     <div class="login-buttons">
-      <button class="u-button" @click.prevent="loginUser">Login</button>
-      <br />
-      <br />
+      <div class="sign-in-options">
+        <v-btn
+          class="login-button"
+          color="#81D4FA"
+          light
+          @click.prevent="loginUser"
+          >Login</v-btn
+        >
+        <div class="forgot-password">
+          <v-app class="login-button" style="height: 20px"
+            ><ForgotPassword
+          /></v-app>
+        </div>
+      </div>
+
       <GoogleSignIn />
       <br />
       <br />
-      <NavButton
-        redirect=""
-        name="Forgot password?"
-        style="font-size: 0.75rem"
-      />
-      <br />
-      <br />
-      <NavButton
-        style="font-size: 0.75rem"
-        redirect="/user/register"
-        name="Dont have an account? Register here!"
-      />
+
+      <nuxt-link to="/user/register"
+        ><v-btn class="nav-button" color="#E0E0E0" light small
+          >Need an account? Register here!</v-btn
+        ></nuxt-link
+      >
     </div>
   </form>
 </template>
 
 <script>
+import { mapState } from "vuex"
 export default {
+  computed: mapState({
+    errorCode: (state) => state.auth.error.errorCode,
+  }),
   data() {
     return {
       email: "",
@@ -55,6 +67,14 @@ export default {
         password: this.password,
       })
     },
+    forgotPassword() {
+      this.$store.dispatch("auth/forgotPassword")
+    },
+  },
+  watch: {
+    error(newError) {
+      console.log(newError)
+    },
   },
 }
 </script>
@@ -62,7 +82,7 @@ export default {
 <style scoped>
 form {
   width: 100%;
-  padding: 20%;
+  padding: 15%;
   background-color: white;
 }
 .title {
@@ -74,5 +94,28 @@ input {
 }
 .login-buttons {
   margin-bottom: 10px;
+}
+
+.errors {
+  color: red;
+}
+.forgot-password {
+  height: 5vh;
+  margin-left: 11px;
+  margin-top: 12px;
+}
+.sign-in-options {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.v-btn__content {
+  font-size: 1rem;
+  color: black;
+}
+.nav-button {
+  width: 100%;
 }
 </style>
