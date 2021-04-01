@@ -1,14 +1,11 @@
-import { auth } from "~/plugins/firebase"
+
 
 const actions = {
   //Start of login user functions
   async getUserByEmail({ commit }, payload) {
     try {
-      await auth
-        .signInWithEmailAndPassword(payload.email, payload.password).then((response) =>{
-          console.log(response.user)
-          commit("setUser", response.user)
-        })
+      await this.$fire.auth
+        .signInWithEmailAndPassword(payload.email, payload.password)
     } catch (error) {
       let errorCode = error.code
       let errorMessage = error.message
@@ -20,7 +17,7 @@ const actions = {
   //Start of register user functions
   async createUserFirebase({ commit }, payload) {
     try {
-      await auth
+      await this.$fire.auth
         .createUserWithEmailAndPassword(payload.email, payload.password)
         .then((res) => {
           console.log(res.user)
@@ -43,7 +40,7 @@ const actions = {
   async signOutUser({commit}) {
     try {
       console.log("signed out")
-      await auth.signOut()
+      await this.$fire.auth.signOut()
     } catch (error) {
       console.log(error)
     }
