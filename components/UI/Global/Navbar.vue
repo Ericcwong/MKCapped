@@ -1,50 +1,55 @@
 <template>
   <div>
-    <b-navbar class="navbar" toggleable="lg" type="dark" variant="muted">
-      <b-navbar-brand class="logo" to="/">Mkcapped</b-navbar-brand>
+    <client-only>
+      <b-navbar class="navbar" toggleable="lg" type="dark" variant="muted">
+        <b-navbar-brand class="logo" to="/">Mkcapped</b-navbar-brand>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" v-model="showCollapse" is-nav>
-        <b-navbar-nav>
-          <nuxt-link class="nav-items" to="/stores">Stores</nuxt-link>
-          <nuxt-link class="nav-items" to="/resources">Resources</nuxt-link>
-          <nuxt-link class="nav-items" to="/community">Community</nuxt-link>
-          <nuxt-link class="nav-items" to="/about">About us</nuxt-link>
-        </b-navbar-nav>
+        <b-collapse id="nav-collapse" v-model="showCollapse" is-nav>
+          <b-navbar-nav>
+            <nuxt-link class="nav-items" to="/stores">Stores</nuxt-link>
+            <nuxt-link class="nav-items" to="/resources">Resources</nuxt-link>
+            <nuxt-link class="nav-items" to="/community">Community</nuxt-link>
+            <nuxt-link class="nav-items" to="/about">About us</nuxt-link>
+          </b-navbar-nav>
 
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <nuxt-link v-if="user === null" class="nav-items" to="/user/login"
-            >Login</nuxt-link
-          >
-          <nuxt-link v-if="user === null" class="nav-items" to="/user/register"
-            >Register</nuxt-link
-          >
-          <!-- <p v-if="displayName !== null" class="user-name">
+          <!-- Right aligned nav items -->
+          <b-navbar-nav class="ml-auto">
+            <nuxt-link v-if="user === null" class="nav-items" to="/user/login"
+              >Login</nuxt-link
+            >
+            <nuxt-link
+              v-if="user === null"
+              class="nav-items"
+              to="/user/register"
+              >Register</nuxt-link
+            >
+            <!-- <p v-if="displayName !== null" class="user-name">
             Welcome, {{ displayName }}
           </p> -->
-          <button
-            class="nav-items sign-out"
-            v-if="user !== null"
-            @click.prevent="signOut"
-          >
-            Logout
-          </button>
+            <button
+              class="nav-items sign-out"
+              v-if="user !== null"
+              @click.prevent="signOut"
+            >
+              Logout
+            </button>
 
-          <!-- Discord -->
-          <a
-            class="nav-items"
-            target="_blank"
-            href="https://discord.gg/NJDjGQb2fK"
-          >
-            <img
-              src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/91_Discord_logo_logos-24.png"
-            /><span id="discord">Discord</span>
-          </a>
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
+            <!-- Discord -->
+            <a
+              class="nav-items"
+              target="_blank"
+              href="https://discord.gg/NJDjGQb2fK"
+            >
+              <img
+                src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/91_Discord_logo_logos-24.png"
+              /><span id="discord">Discord</span>
+            </a>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+    </client-only>
   </div>
 </template>
 
