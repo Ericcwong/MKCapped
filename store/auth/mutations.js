@@ -28,6 +28,19 @@ const mutations = {
   },
   //End of login user functions.
   //Start of sign out user function.
+  ON_AUTH_STATE_CHANGED_MUTATION:(state, {authUser, claims}) =>{
+    if(!authUser){
+      console.log("No user signed in")
+      state.user = null
+    }else{
+      console.log("Welcome", authUser)
+      const { email, uid } = authUser
+      const admin = claims.admin
+      console.log(admin)
+      state.user = { email, uid, admin }
+      
+    }
+  }
 }
 
 export default mutations
