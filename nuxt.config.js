@@ -21,11 +21,7 @@ export default {
   css: ["~/assets/style.css"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ["~/plugins/firebase.js", "~/plugins/firebaseAuth.js", '~/plugins/persistedState.client.js' ],
-  // Router
-  router:{
-    // middleware: ["router-guard"]
-  },
+  plugins: ['~/plugins/persistedState.client.js' ],
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
 
@@ -42,7 +38,32 @@ export default {
     "@nuxtjs/pwa",
     // https://go.nuxtjs.dev/content
     "@nuxt/content",
-
+    [
+      "@nuxtjs/firebase",
+      {
+        config:{
+          apiKey: "AIzaSyCTLXqFwCneCXT_e-h2tJV86Vu9TDRIDFo",
+          authDomain: "mkcapped.firebaseapp.com",
+          projectId: "mkcapped",
+          storageBucket: "mkcapped.appspot.com",
+          messagingSenderId: "1043404648742",
+          appId: "1:1043404648742:web:fe754ad6a763ac813811e7",
+          measurementId: "G-7PT45T2R3P",
+        },
+        services:{
+          auth: {
+            ssr: true,
+            initialize: {
+              onAuthStateChangedMutation: 'auth/ON_AUTH_STATE_CHANGED_MUTATION',
+              // onAuthStateChangedAction: 'auth/onAuthStateChangedAction',
+              subscribeManually: false
+            }
+          },
+          functions: true,
+          
+        }
+      }
+    ]
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -57,11 +78,21 @@ export default {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true
   },
-  // publicRuntimeConfig:{
-  //   test1: "public",
-  //   test2: "public"
-  // },
-  // privateRuntimeConfig:{
-  //   test2: "private"
-  // }
+  pwa: {
+    // disable the modules you don't need
+    meta: false,
+    icon: false,
+    // if you omit a module key form configuration sensible defaults will be applied
+    // manifest: false,
+
+    workbox: {
+      importScripts: [
+        // ...
+        '/firebase-auth-sw.js'
+      ],
+      // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
+      // only set this true for testing and remember to always clear your browser cache in development
+      dev: process.env.NODE_ENV === 'development',
+    }
+  }
 }
