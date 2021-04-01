@@ -1,5 +1,3 @@
-
-
 const actions = {
   //Start of login user functions
   async getUserByEmail({ commit }, payload) {
@@ -36,6 +34,7 @@ const actions = {
     }
   },
   //End of register user functions
+
   //Start of sign out user functions
   async signOutUser({commit}) {
     try {
@@ -47,6 +46,13 @@ const actions = {
   },
   //End of sign out user functions
 
+  //Start of Forgot password
+  async forgotPassword({commit},payload){
+    let email = payload
+    this.$fire.auth.sendPasswordResetEmail(email).then(()=>{
+      console.log("password reset sent")
+    })
+  }
 }
 
 export default actions
