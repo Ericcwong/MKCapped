@@ -23,7 +23,13 @@
           autocomplete="off"
         ></b-form-input>
       </b-form-group>
-      <button class="u-button" @click.prevent="registerUser">Register</button>
+      <v-btn
+        class="login-button"
+        color="#81D4FA"
+        light
+        @click.prevent="registerUser"
+        >Register</v-btn
+      >
       <br />
       <br />
     </form>
@@ -34,18 +40,16 @@
     <br />
     <br />
     <!-- Button redirect to login page -->
-    <NavButton
-      style="font-size: 0.75rem"
-      redirect="/user/login"
-      name="Have an account? Login here!"
-    />
+    <nuxt-link to="/user/register"
+      ><v-btn color="#E0E0E0" light
+        >Have an account? Login here!</v-btn
+      ></nuxt-link
+    >
   </div>
 </template>
 
 <script>
-import GoogleSignIn from "./GoogleSignIn.vue"
 export default {
-  components: { GoogleSignIn },
   data() {
     return {
       name: "",
