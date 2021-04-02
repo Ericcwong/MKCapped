@@ -14,6 +14,7 @@ export default {}
 <style scoped>
 .login {
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

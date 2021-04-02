@@ -1,29 +1,14 @@
 <template>
-  <div class="container">
-    <form>
-      <input type="email" placeholder="User email" v-model="adminEmail" />
-      <button @click.prevent="addAdmin">Add Admin</button>
-    </form>
-  </div>
+  <div class="container"><MakeAdmin /></div>
 </template>
 
 <script>
 export default {
   middleware: "router-guard",
   data() {
-    return {
-      adminEmail: "",
-    }
+    return {}
   },
-  methods: {
-    addAdmin() {
-      const adminForm = this.adminEmail
-      const addAdminRole = this.$fire.functions.httpsCallable("addAdminRole")
-      addAdminRole({ email: adminForm }).then((results) => {
-        console.log(results)
-      })
-    },
-  },
+  methods: {},
 }
 </script>
 
