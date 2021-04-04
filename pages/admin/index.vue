@@ -1,5 +1,12 @@
 <template>
-  <div class="container"><MakeAdmin /></div>
+  <div class="container">
+    <div class="admin-actions">
+      <MakeAdmin />
+    </div>
+    <div class="admin-actions">
+      <AddStore />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,10 +21,11 @@ export default {
 
 <style scoped>
 .container {
+  display: flex;
   background: white;
   height: 100vh;
 }
-button {
-  border: 1px black solid;
+.admin-actions {
+  width: 100%;
 }
 </style>
