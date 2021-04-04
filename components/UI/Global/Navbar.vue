@@ -19,15 +19,22 @@
             <nuxt-link v-if="user === null" class="nav-items" to="/user/login"
               >Login</nuxt-link
             >
+
             <nuxt-link
               v-if="user === null"
               class="nav-items"
               to="/user/register"
               >Register</nuxt-link
             >
-            <!-- <p v-if="displayName !== null" class="user-name">
-            Welcome, {{ displayName }}
-          </p> -->
+            <div v-if="user !== null">
+              <a
+                v-if="user.admin === true"
+                href="/admin"
+                class="nav-items admin"
+              >
+                Admin
+              </a>
+            </div>
             <button
               class="nav-items sign-out"
               v-if="user !== null"
