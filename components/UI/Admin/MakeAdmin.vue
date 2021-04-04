@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card elevation="2" outlined width="40%">
+    <v-card elevation="2" outlined>
       <v-card-title>Make an Admin</v-card-title>
       <v-card-text
         >Enter the email address you want admin
