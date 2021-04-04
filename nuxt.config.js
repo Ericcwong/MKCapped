@@ -59,8 +59,10 @@ export default {
               subscribeManually: false
             }
           },
+          firestore: {
+            enablePersistence: true
+          },
           functions: true,
-          
         }
       }
     ]
