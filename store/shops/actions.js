@@ -18,10 +18,10 @@ const actions = {
   async loadShops({commit}){
       const shopRef = this.$fire.firestore.collection('shops')
       try{
-        const shopDoc = await shopRef.get()
-        let data = shopDoc.docs.map(doc => doc.data());
-        console.log(data)
-        commit("LOAD_SHOPS", data)
+          await shopRef.get().then((querySnapshot) =>{
+          let data = querySnapshot.docs.map(doc => doc.data());        
+          commit("LOAD_SHOPS", data)
+        })
       }catch(error){
         console.error(error)
       }
