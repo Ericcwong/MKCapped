@@ -13,17 +13,11 @@
 
 <script>
 export default {
-  data() {
-    return {
-      data: ["test", "test1", "test2", "test3"],
-    }
-  },
   created: function () {
     this.$store.dispatch("shops/loadShops")
   },
   computed: {
     shops() {
-      console.log(this.$store.state.shops)
       return this.$store.state.shops.shops
     },
   },
@@ -33,8 +27,10 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-.shop-cards {
+.container > .shop-cards {
   width: 400px;
 }
 </style>
