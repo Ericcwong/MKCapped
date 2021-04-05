@@ -16,6 +16,9 @@
         placeholder="password"
         required
       ></b-form-input>
+      <div class="forgot-password">
+        <input type="checkbox" @click.prevent="showPassword" />show password
+      </div>
     </b-form-group>
     <div class="errors">{{ errorCode }}</div>
 
@@ -69,6 +72,14 @@ export default {
     },
     forgotPassword() {
       this.$store.dispatch("auth/forgotPassword")
+    },
+    showPassword() {
+      let password = document.getElementById("password")
+      if (password.type === "password") {
+        password.type = "text"
+      } else {
+        password.type = "password"
+      }
     },
   },
   watch: {
