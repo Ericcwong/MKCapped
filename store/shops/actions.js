@@ -1,14 +1,8 @@
 
 const actions = {
-    async createStore(payload){
-        const shopRef = this.$fire.firestore.collection('shops').doc("shops")
+    async createShop({commit},payload){
+        const shopRef = this.$fire.firestore.collection('shops').doc()
   try {
-      console.log(
-          payload,{
-        storeName: payload.storeName,
-        storeLogo: payload.storeLogo,
-        storeURL: payload.storeURL
-      })
     await shopRef.set({
       storeName: payload.storeName,
       storeLogo: payload.storeLogo,
@@ -19,6 +13,18 @@ const actions = {
   return
   }
   alert('Success.')
+    },
+
+  async loadShops({commit}){
+      const shopRef = this.$fire.firestore.collection('shops')
+      try{
+        const shopDoc = await shopRef.get()
+        let data = shopDoc.docs.map(doc => doc.data());
+        console.log(data)
+        commit("LOAD_SHOPS", data)
+      }catch(error){
+        console.error(error)
+      }
     }
 }
 export default actions
