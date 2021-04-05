@@ -4,7 +4,7 @@
       <MakeAdmin />
     </div>
     <div class="admin-actions">
-      <AddStore />
+      <AddShop />
     </div>
   </div>
 </template>
