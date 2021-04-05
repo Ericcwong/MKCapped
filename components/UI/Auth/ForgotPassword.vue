@@ -13,8 +13,12 @@
         <v-card-text>
           <v-container>
             <v-col cols="12">
-              <v-text-field label="Email*" required></v-text-field>
-            </v-col>
+              <v-text-field
+                label="Email*"
+                v-model="email"
+                required
+              ></v-text-field> </v-col
+            >{{ email }}
           </v-container>
         </v-card-text>
         <v-card-actions>
@@ -22,7 +26,7 @@
           <v-btn color="blue darken-1" text @click="dialog = false">
             Close
           </v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">
+          <v-btn color="blue darken-1" text @click.prevent="forgotPassword">
             Send Email
           </v-btn>
         </v-card-actions>
@@ -35,8 +39,14 @@
 export default {
   data() {
     return {
+      email: "",
       dialog: false,
     }
+  },
+  methods: {
+    forgotPassword() {
+      this.$store.dispatch("auth/forgotPassword", this.email)
+    },
   },
 }
 </script>
