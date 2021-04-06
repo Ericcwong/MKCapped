@@ -4,7 +4,7 @@
       <v-card-title>Make an Admin</v-card-title>
       <v-card-text
         >Enter the email address you want admin
-        <input type="email" placeholder="Email" />
+        <input type="email" placeholder="Email" v-model="adminEmail" />
       </v-card-text>
       <v-card-actions>
         <v-btn color="deep-purple lighten-2" text @click="addAdmin">
