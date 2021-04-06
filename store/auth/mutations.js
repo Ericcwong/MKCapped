@@ -11,6 +11,10 @@ const mutations = {
     state.error.errorCode = payload.errorCode
     state.error.errorMessage = payload.errorMessage
   },
+  clearUserError(state){
+    state.error.errorCode = null,
+    state.error.errorMessage =null
+  },
   //End of login user functions.
   //Start of sign out user function.
   ON_AUTH_STATE_CHANGED_MUTATION:(state, {authUser, claims}) =>{
