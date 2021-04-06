@@ -21,7 +21,7 @@ export default {}
 .loginForm {
   flex: 0 1 auto;
   background-color: white;
-  width: 50%;
+  width: 65%;
   display: flex;
   align-items: center;
   justify-content: center;
