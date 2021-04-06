@@ -29,7 +29,8 @@ const actions = {
           }
         })
     } catch (error) {
-      this.error = error.message
+     let errorMessage = error.message
+      commit("getUserError", { errorMessage })
       console.log(error)
     }
   },
