@@ -1,54 +1,35 @@
 <template>
-  <form>
-    {{ this.$store.state.auth.userSignUpStatus }}
-    <b-form-group class="title" label="Login:" label-for="input-1">
-      <b-form-input
-        id="email"
-        v-model="email"
-        type="email"
-        placeholder="email"
-        required
-      ></b-form-input>
-      <b-form-input
-        id="password"
+  <v-container class="d-inline-flex">
+    <form>
+      <h1>Login</h1>
+      <v-text-field v-model="email" label="Email" required></v-text-field>
+      <v-text-field
         v-model="password"
-        type="password"
-        placeholder="password"
-        required
-      ></b-form-input>
-      <div class="forgot-password">
-        <input type="checkbox" @click.prevent="showPassword" />show password
-      </div>
-    </b-form-group>
-    <div class="errors">{{ errorCode }}</div>
+        label="Password"
+        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="show1 ? 'text' : 'password'"
+        name="input-10-1"
+        @click:append="show1 = !show1"
+      ></v-text-field>
 
-    <div class="login-buttons">
-      <div class="sign-in-options">
-        <v-btn
-          class="login-button"
-          color="#81D4FA"
-          light
-          @click.prevent="loginUser"
-          >Login</v-btn
-        >
-        <div class="forgot-password">
-          <v-app class="login-button" style="height: 20px"
-            ><ForgotPassword
-          /></v-app>
-        </div>
-      </div>
-
-      <GoogleSignIn />
-      <br />
-      <br />
-
-      <nuxt-link to="/user/register"
-        ><v-btn class="nav-button" color="#E0E0E0" light small
-          >Need an account? Register here!</v-btn
-        ></nuxt-link
+      <v-btn
+        class="login-button"
+        elevation="2"
+        outlined
+        raised
+        @click.prevent="loginUser"
+        >Login</v-btn
       >
-    </div>
-  </form>
+
+      <GoogleSignIn class="login-button" />
+
+      <nuxt-link to="/user/register">
+        <v-btn class="login-button" color="#E0E0E0" light small>
+          Need an account? Register here!
+        </v-btn>
+      </nuxt-link>
+    </form>
+  </v-container>
 </template>
 
 <script>
@@ -61,6 +42,7 @@ export default {
     return {
       email: "",
       password: "",
+      show1: false,
     }
   },
   methods: {
@@ -93,40 +75,34 @@ export default {
 <style scoped>
 form {
   width: 100%;
-  padding: 15%;
+  padding: 10%;
   background-color: white;
-}
-.title {
-  font-size: 1.75rem;
-}
-input {
-  height: 3rem;
-  margin-bottom: 15px;
-}
-.login-buttons {
-  margin-bottom: 10px;
 }
 
 .errors {
   color: red;
 }
-.forgot-password {
+.login-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+/* .forgot-password {
   height: 5vh;
   margin-left: 11px;
   margin-top: 12px;
-}
-.sign-in-options {
+} */
+/* .sign-in-options {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 15px;
-}
+} */
 
-.v-btn__content {
+/* .v-btn__content {
   font-size: 1rem;
   color: black;
 }
 .nav-button {
   width: 100%;
-}
+} */
 </style>
