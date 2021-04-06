@@ -1,51 +1,44 @@
 <template>
-  <!-- Registering a user for email and password registration. -->
-  <div class="registration-component">
+  <v-container class="d-inline-flex">
     <form>
-      <b-form-group class="title" label="Register:" label-for="input-1">
-        <b-form-input
-          id="name"
-          v-model="name"
-          type="text"
-          placeholder="name"
-        ></b-form-input>
-        <b-form-input
-          id="email"
-          v-model="email"
-          type="email"
-          placeholder="email"
-        ></b-form-input>
-        <b-form-input
-          id="password"
-          v-model="password"
-          type="password"
-          placeholder="password"
-          autocomplete="off"
-        ></b-form-input>
-      </b-form-group>
+      <h1>Register</h1>
+      <v-text-field v-model="email" label="Email" required></v-text-field>
+      <v-text-field
+        v-model="password"
+        label="Password"
+        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="show1 ? 'text' : 'password'"
+        name="input-10-1"
+        @click:append="show1 = !show1"
+      ></v-text-field>
+      <v-text-field
+        v-model="reEnterPassword"
+        label="Reenter password"
+        :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="show2 ? 'text' : 'password'"
+        name="input-10-1"
+        @click:append="show2 = !show2"
+      ></v-text-field>
+      <div class="error">{{ error }}</div>
+      <div class="error">{{ registerError }}</div>
       <v-btn
         class="login-button"
-        color="#81D4FA"
-        light
+        elevation="2"
+        outlined
+        raised
         @click.prevent="registerUser"
         >Register</v-btn
       >
-      <br />
-      <br />
+
+      <GoogleSignIn class="login-button" />
+
+      <nuxt-link to="/user/register">
+        <v-btn class="login-button" color="#E0E0E0" light small>
+          Need an account? Register here!
+        </v-btn>
+      </nuxt-link>
     </form>
-    <!-- Google Sign in option -->
-    <GoogleSignIn />
-    <!-- Error message if user runs in an issue -->
-    <span class="error" v-if="error !== ''">{{ error }}</span>
-    <br />
-    <br />
-    <!-- Button redirect to login page -->
-    <nuxt-link to="/user/register"
-      ><v-btn color="#E0E0E0" light
-        >Have an account? Login here!</v-btn
-      ></nuxt-link
-    >
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -55,32 +48,50 @@ export default {
       name: "",
       email: "",
       password: "",
+      reEnterPassword: "",
       error: "",
+      show1: false,
+      show2: false,
     }
+  },
+  computed: {
+    registerError() {
+      return this.$store.state.auth.error.errorMessage
+    },
+  },
+  mounted() {
+    const clearError = this.$store.commit("auth/clearUserError")
+    clearError
   },
   methods: {
     registerUser() {
-      this.$store.dispatch("auth/createUserFirebase", {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-      })
+      if (this.password === this.reEnterPassword) {
+        this.error = ""
+        this.$store.dispatch("auth/createUserFirebase", {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        })
+      } else {
+        this.error = "Passwords do not match."
+      }
     },
   },
 }
 </script>
 <style scoped>
-.registration-component {
+form {
   width: 100%;
-  padding: 20%;
+  padding: 10%;
   background-color: white;
 }
-.title {
-  font-size: 1.75rem;
+
+.errors {
+  color: red;
 }
-input {
-  height: 3rem;
-  margin-bottom: 15px;
+.login-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .error {
   color: red;
