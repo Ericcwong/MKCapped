@@ -8,14 +8,15 @@
 
 
 <script>
+import firebase from "firebase/app"
 export default {
   methods: {
     googleSignup() {
+      var provider = new firebase.auth.GoogleAuthProvider()
       this.$fire.auth
         .signInWithPopup(provider)
         .then((result) => {
           /** @type {firebase.auth.OAuthCredential} */
-          this.$store.commit("auth/getUser", result.user)
           var credential = result.credential
 
           // This gives you a Google Access Token. You can use it to access the Google API.
