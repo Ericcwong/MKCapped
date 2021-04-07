@@ -2,6 +2,12 @@
   <v-container class="d-inline-flex">
     <form>
       <h1>Register</h1>
+      <v-text-field
+        id="fname"
+        v-model="FirstName"
+        label="First Name"
+        required
+      ></v-text-field>
       <v-text-field v-model="email" label="Email" required></v-text-field>
       <v-text-field
         v-model="password"
@@ -45,7 +51,7 @@
 export default {
   data() {
     return {
-      name: "",
+      firstName: "",
       email: "",
       password: "",
       reEnterPassword: "",
