@@ -6,7 +6,8 @@ const actions = {
     await shopRef.set({
       storeName: payload.storeName,
       storeLogo: payload.storeLogo,
-      storeURL: payload.storeURL
+      storeURL: payload.storeURL,
+      storeOptions: payload.storeOptions,
     })
   } catch (e) {
   alert(e)

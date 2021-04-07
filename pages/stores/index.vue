@@ -7,6 +7,7 @@
       :storeName="shop.storeName"
       :storeLogo="shop.storeLogo"
       :storeURL="shop.storeURL"
+      :storeOptions="shop.storeOptions"
     />
   </div>
 </template>
@@ -29,8 +30,5 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-}
-.container > .shop-cards {
-  width: 400px;
 }
 </style>
