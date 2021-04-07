@@ -13,8 +13,8 @@
       <div class="storeURL">
         <label for="storeURL">Store Url:</label>
         <input v-model="storeURL" type="text" id="storeURL" />
-        {{ storeName }}
       </div>
+      <ShopOptions v-on:selectedData="getData($event)" />
       <v-btn @click.prevent="createShop">Create store</v-btn>
     </form>
   </v-card>
@@ -27,15 +27,21 @@ export default {
       storeName: "",
       storeLogo: "",
       storeURL: "",
+      storeOptions: null,
     }
   },
   methods: {
+    getData(value) {
+      this.storeOptions = value
+    },
     createShop() {
       console.log(this.storeName, this.storeLogo, this.storeURL)
+      console.log(this.storeOptions)
       this.$store.dispatch("shops/createShop", {
         storeName: this.storeName,
         storeLogo: this.storeLogo,
         storeURL: this.storeURL,
+        storeOptions: this.storeOptions,
       })
     },
   },
