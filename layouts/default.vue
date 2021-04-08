@@ -1,8 +1,8 @@
 <template>
-  <div class="app">
+  <v-app>
     <Navbar />
     <Nuxt />
-  </div>
+  </v-app>
 </template>
 <script>
 export default {}
