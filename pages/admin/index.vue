@@ -1,21 +1,44 @@
 <template>
-  <div class="container">
+  <v-container fluid>
+    <NavDrawer v-on:loadComponent="getComponent($event)" />
     <div class="admin-actions">
-      <MakeAdmin />
+      <MakeAdmin v-show="revealMakeAdmin" />
+      <AddShop v-show="revealAddShop" />
     </div>
-    <div class="admin-actions">
-      <AddShop />
-    </div>
-  </div>
+  </v-container>
 </template>
 
 <script>
 export default {
   middleware: "router-guard",
   data() {
-    return {}
+    return {
+      revealDashboard: false,
+      revealMakeAdmin: false,
+      revealAddShop: true,
+    }
   },
-  methods: {},
+  methods: {
+    getComponent(value) {
+      switch (value) {
+        case "Dashboard":
+          ;(this.revealDashboard = true),
+            (this.revealMakeAdmin = false),
+            (this.revealAddShop = true)
+          break
+        case "Add Shop":
+          ;(this.revealDashboard = false),
+            (this.revealMakeAdmin = false),
+            (this.revealAddShop = true)
+          break
+        case "Make Admin":
+          ;(this.revealDashboard = false),
+            (this.revealMakeAdmin = true),
+            (this.revealAddShop = false)
+          break
+      }
+    },
+  },
 }
 </script>
 
