@@ -14,6 +14,10 @@
         <label for="storeURL">Store Url:</label>
         <input v-model="storeURL" type="text" id="storeURL" />
       </div>
+      <div class="storeDescription">
+        <label for="storeDescription">Store Description:</label>
+        <textarea name="storeDescription" id="" cols="30" rows="10"></textarea>
+      </div>
       <ShopOptions v-on:selectedData="getData($event)" />
       <v-btn @click.prevent="createShop">Create store</v-btn>
     </form>
