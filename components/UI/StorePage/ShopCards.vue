@@ -13,7 +13,7 @@
       <h5 class="footer-title">Store Offers:</h5>
       <v-chip-group multiple active-class="primary--text">
         <v-card-actions v-for="option in storeOptions" :key="option">
-          <v-chip color="blue">{{ option }}</v-chip>
+          <v-chip>{{ option }}</v-chip>
         </v-card-actions>
       </v-chip-group>
       <v-card-actions>
