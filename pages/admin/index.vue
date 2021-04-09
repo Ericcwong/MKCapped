@@ -47,6 +47,8 @@ export default {
   display: flex;
   background: white;
   height: 100vh;
+  max-width: 100%;
+  margin: 0;
 }
 .admin-actions {
   width: 100%;
