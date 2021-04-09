@@ -3,7 +3,7 @@ const actions = {
   async getUserByEmail({ commit }, payload) {
     try {
       await this.$fire.auth
-        .signInWithEmailAndPassword(payload.email, payload.password)
+        .signInWithEmailAndPassword(payload.email, payload.password).then(this.$router.push("/stores"))
     } catch (error) {
       let errorCode = error.code
       let errorMessage = error.message
