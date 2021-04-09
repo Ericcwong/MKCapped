@@ -16,24 +16,19 @@
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <nuxt-link v-if="user === null" class="nav-items" to="/user/login"
-              >Login</nuxt-link
-            >
+            <nuxt-link v-if="user === null" class="nav-items" to="/user/login">
+              Login
+            </nuxt-link>
 
             <nuxt-link
               v-if="user === null"
               class="nav-items"
               to="/user/register"
-              >Register</nuxt-link
             >
-            <div v-if="user !== null">
-              <a
-                v-if="user.admin === true"
-                href="/admin"
-                class="nav-items admin"
-              >
-                Admin
-              </a>
+              Register
+            </nuxt-link>
+            <div v-if="user !== null" class="nav-items">
+              <a v-if="user.admin === true" href="/admin"> Admin </a>
             </div>
             <button
               class="nav-items sign-out"
@@ -49,9 +44,10 @@
               target="_blank"
               href="https://discord.gg/NJDjGQb2fK"
             >
-              <img
+              <span id="discord">Discord</span
+              ><img
                 src="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/91_Discord_logo_logos-24.png"
-              /><span id="discord">Discord</span>
+              />
             </a>
           </b-navbar-nav>
         </b-collapse>
@@ -66,6 +62,7 @@ export default {
     return {
       status: false,
       showCollapse: false,
+      routes: ["stores", "resources", "community", "about"],
     }
   },
   computed: {
@@ -134,6 +131,10 @@ small {
 }
 #discord {
   color: #758afa;
+}
+a {
+  color: white;
+  text-decoration: none;
 }
 @media only screen and (max-width: 990px) {
   #nav-collapse {
