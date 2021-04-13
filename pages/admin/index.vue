@@ -2,6 +2,7 @@
   <v-container fluid>
     <NavDrawer v-on:loadComponent="getComponent($event)" />
     <div class="admin-actions">
+      <Dashboard v-show="revealDashboard" />
       <MakeAdmin v-show="revealMakeAdmin" />
       <AddShop v-show="revealAddShop" />
     </div>
@@ -10,7 +11,16 @@
 
 <script>
 export default {
-  middleware: "router-guard",
+  middleware({ store, redirect }) {
+    const user = store.state.auth.user
+    const isAuthenticated = store.state.auth.user.admin
+
+    if (user == null) {
+      return redirect("/")
+    } else if (isAuthenticated == null) {
+      return redirect("/")
+    }
+  },
   data() {
     return {
       revealDashboard: false,
@@ -24,7 +34,7 @@ export default {
         case "Dashboard":
           ;(this.revealDashboard = true),
             (this.revealMakeAdmin = false),
-            (this.revealAddShop = true)
+            (this.revealAddShop = false)
           break
         case "Add Shop":
           ;(this.revealDashboard = false),
@@ -45,12 +55,13 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  justify-content: space-evenly;
   background: white;
-  height: 100vh;
   max-width: 100%;
   margin: 0;
 }
 .admin-actions {
   width: 100%;
+  height: 75%;
 }
 </style>
