@@ -4,6 +4,7 @@ const actions = {
         const shopRef = this.$fire.firestore.collection('shops').doc()
   try {
     await shopRef.set({
+      id: shopRef.id,
       storeName: payload.storeName,
       storeLogo: payload.storeLogo,
       storeURL: payload.storeURL,
@@ -20,12 +21,27 @@ const actions = {
       const shopRef = this.$fire.firestore.collection('shops')
       try{
           await shopRef.get().then((querySnapshot) =>{
-          let data = querySnapshot.docs.map(doc => doc.data());        
+          let data = querySnapshot.docs.map(doc => doc.data());
+          console.log(data)        
           commit("LOAD_SHOPS", data)
         })
       }catch(error){
         console.error(error)
       }
-    }
+    },
+  async deleteShop({commit,dispatch},payload){
+     try{
+       let confirmation = confirm("Are you sure you want to delete?")
+       if(confirmation === true){
+         this.$fire.firestore.collection('shops').doc(payload).delete()
+         dispatch("shops/loadShop")
+       }
+       
+     }catch(error){
+       console.error(error)
+     }
+    
+
+  } 
 }
 export default actions
