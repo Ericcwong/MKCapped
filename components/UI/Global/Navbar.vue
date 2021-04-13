@@ -28,7 +28,9 @@
               Register
             </nuxt-link>
             <div v-if="user !== null" class="nav-items">
-              <a v-if="user.admin === true" href="/admin"> Admin </a>
+              <nuxt-link v-if="user.admin === true" to="/admin">
+                Admin
+              </nuxt-link>
             </div>
             <button
               class="nav-items sign-out"
