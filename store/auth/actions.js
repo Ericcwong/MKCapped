@@ -40,7 +40,7 @@ const actions = {
   async signOutUser({commit}) {
     try {
       console.log("signed out")
-      await this.$fire.auth.signOut()
+      await this.$fire.auth.signOut().then(this.$route.push("/"))
     } catch (error) {
       console.log(error)
     }
