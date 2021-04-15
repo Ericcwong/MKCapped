@@ -3,7 +3,14 @@
     <v-navigation-drawer permanent>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="title"> Admin Pannel </v-list-item-title>
+          <v-btn
+            ><v-list-item-title
+              class="title"
+              @click.prevent="loadComponent('')"
+            >
+              Admin Panel
+            </v-list-item-title></v-btn
+          >
         </v-list-item-content>
       </v-list-item>
 

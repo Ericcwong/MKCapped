@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <v-container>
     <ShopCards
       v-for="shop in shops"
       :key="shop.id"
@@ -12,7 +12,7 @@
       :editStore="editStore"
       :deleteStore="deleteStore"
     />
-  </div>
+  </v-container>
 </template>
 
 <script>
