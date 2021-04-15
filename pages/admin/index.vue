@@ -2,14 +2,18 @@
   <v-container fluid>
     <NavDrawer v-on:loadComponent="getComponent($event)" />
     <div class="admin-actions">
-      <Dashboard v-show="revealDashboard" />
-      <MakeAdmin v-show="revealMakeAdmin" />
-      <AddShop v-show="revealAddShop" />
+      <keep-alive>
+        <component :is="userComponent"></component>
+      </keep-alive>
     </div>
   </v-container>
 </template>
 
 <script>
+// import Dashboard from "~/components/UI/Admin/Dashboard"
+const Dashboard = () => import("~/components/UI/Admin/Dashboard")
+const AddShop = () => import("~/components/UI/Admin/AddShop")
+const MakeAdmin = () => import("~/components/UI/Admin/MakeAdmin")
 export default {
   middleware({ store, redirect }) {
     const user = store.state.auth.user
@@ -23,31 +27,39 @@ export default {
   },
   data() {
     return {
-      revealDashboard: false,
-      revealMakeAdmin: false,
-      revealAddShop: true,
+      component: "",
     }
+  },
+  computed: {
+    userComponent() {
+      if (this.component === "Dashboard") return Dashboard
+      if (this.component === "Add Shop") return AddShop
+      if (this.component === "Make Admin") return MakeAdmin
+    },
   },
   methods: {
     getComponent(value) {
-      switch (value) {
-        case "Dashboard":
-          ;(this.revealDashboard = true),
-            (this.revealMakeAdmin = false),
-            (this.revealAddShop = false)
-          break
-        case "Add Shop":
-          ;(this.revealDashboard = false),
-            (this.revealMakeAdmin = false),
-            (this.revealAddShop = true)
-          break
-        case "Make Admin":
-          ;(this.revealDashboard = false),
-            (this.revealMakeAdmin = true),
-            (this.revealAddShop = false)
-          break
-      }
+      this.component = value
     },
+    // getComponent(value) {
+    //   switch (value) {
+    //     case "Dashboard":
+    //       ;(this.revealDashboard = true),
+    //         (this.revealMakeAdmin = false),
+    //         (this.revealAddShop = false)
+    //       break
+    //     case "Add Shop":
+    //       ;(this.revealDashboard = false),
+    //         (this.revealMakeAdmin = false),
+    //         (this.revealAddShop = true)
+    //       break
+    //     case "Make Admin":
+    //       ;(this.revealDashboard = false),
+    //         (this.revealMakeAdmin = true),
+    //         (this.revealAddShop = false)
+    //       break
+    //   }
+    // },
   },
 }
 </script>
