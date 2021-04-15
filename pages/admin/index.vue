@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <NavDrawer v-on:loadComponent="getComponent($event)" />
     <div class="admin-actions">
       <keep-alive>
@@ -11,6 +11,7 @@
 
 <script>
 // import Dashboard from "~/components/UI/Admin/Dashboard"
+const Home = () => import("~/components/UI/Admin/Home")
 const Dashboard = () => import("~/components/UI/Admin/Dashboard")
 const AddShop = () => import("~/components/UI/Admin/AddShop")
 const MakeAdmin = () => import("~/components/UI/Admin/MakeAdmin")
@@ -32,6 +33,7 @@ export default {
   },
   computed: {
     userComponent() {
+      if (this.component === "") return Home
       if (this.component === "Dashboard") return Dashboard
       if (this.component === "Add Shop") return AddShop
       if (this.component === "Make Admin") return MakeAdmin
@@ -41,25 +43,6 @@ export default {
     getComponent(value) {
       this.component = value
     },
-    // getComponent(value) {
-    //   switch (value) {
-    //     case "Dashboard":
-    //       ;(this.revealDashboard = true),
-    //         (this.revealMakeAdmin = false),
-    //         (this.revealAddShop = false)
-    //       break
-    //     case "Add Shop":
-    //       ;(this.revealDashboard = false),
-    //         (this.revealMakeAdmin = false),
-    //         (this.revealAddShop = true)
-    //       break
-    //     case "Make Admin":
-    //       ;(this.revealDashboard = false),
-    //         (this.revealMakeAdmin = true),
-    //         (this.revealAddShop = false)
-    //       break
-    //   }
-    // },
   },
 }
 </script>
