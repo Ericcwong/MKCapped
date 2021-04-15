@@ -6,11 +6,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-html,
-body {
+html, body {
   font-family: "Raleway";
-  height: 100vh;
+  height: 100%;
 }
+
 .u-button {
   border: none;
   background-color: rgba(0, 0, 0, 0);
