@@ -38,9 +38,12 @@ const actions = {
 
   //Start of sign out user functions
   async signOutUser({commit}) {
+
     try {
       console.log("signed out")
-      await this.$fire.auth.signOut().then(this.$route.push("/"))
+      await this.$fire.auth.signOut().then(()=>{
+        this.$router.push("/")
+      })
     } catch (error) {
       console.log(error)
     }
