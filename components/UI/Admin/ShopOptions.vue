@@ -1,5 +1,5 @@
 <template>
-  <v-container class="container">
+  <v-container fluid>
     <div v-for="option in options" :key="option">
       <v-checkbox
         @click.prevent="selectedData"

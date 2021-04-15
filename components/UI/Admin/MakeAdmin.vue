@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style scoped>
+div {
+  font-size: 2rem;
+  width: 100%;
+}
 input {
   border: 1px solid gray;
 }

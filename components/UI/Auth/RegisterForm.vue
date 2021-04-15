@@ -1,10 +1,10 @@
 <template>
-  <v-container class="d-inline-flex">
-    <form>
+  <v-container>
+    <form @keydown.enter="registerUser">
       <h1>Register</h1>
       <v-text-field
         id="fname"
-        v-model="FirstName"
+        v-model="firstName"
         label="First Name"
         required
       ></v-text-field>
@@ -35,15 +35,14 @@
         @click.prevent="registerUser"
         >Register</v-btn
       >
-
-      <GoogleSignIn class="login-button" />
-
-      <nuxt-link to="/user/register">
-        <v-btn class="login-button" color="#E0E0E0" light small>
-          Need an account? Register here!
-        </v-btn>
-      </nuxt-link>
     </form>
+    <GoogleSignIn class="login-button" />
+
+    <nuxt-link to="/user/login">
+      <v-btn class="login-button" color="#E0E0E0" light small>
+        Have an account? Login here!
+      </v-btn>
+    </nuxt-link>
   </v-container>
 </template>
 
@@ -74,7 +73,7 @@ export default {
       if (this.password === this.reEnterPassword) {
         this.error = ""
         this.$store.dispatch("auth/createUserFirebase", {
-          name: this.name,
+          firstName: this.firstName,
           email: this.email,
           password: this.password,
         })
@@ -86,7 +85,7 @@ export default {
 }
 </script>
 <style scoped>
-form {
+.container {
   width: 100%;
   padding: 10%;
   background-color: white;

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="test">
+  <div>
     <v-card>
       <form>
         <v-card-title>Add a store!</v-card-title>
@@ -36,7 +36,7 @@
       :storeURL="storeURL"
       :storeOptions="storeOptions"
     />
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -68,9 +68,11 @@ export default {
 </script>
 
 <style scoped>
-.test {
+.container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  gap: 3rem;
+  width: 100%;
 }
 .v-card {
   width: 50%;

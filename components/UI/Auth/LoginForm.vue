@@ -1,6 +1,6 @@
 <template>
-  <v-container class="d-inline-flex">
-    <form>
+  <v-container>
+    <form @keydown.enter="loginUser">
       <h1>Login</h1>
       <v-text-field v-model="email" label="Email" required></v-text-field>
       <v-text-field
@@ -20,15 +20,14 @@
         @click.prevent="loginUser"
         >Login</v-btn
       >
-
-      <GoogleSignIn class="login-button" />
-
-      <nuxt-link to="/user/register">
-        <v-btn class="login-button" color="#E0E0E0" light small>
-          Need an account? Register here!
-        </v-btn>
-      </nuxt-link>
     </form>
+    <GoogleSignIn class="login-button" />
+
+    <nuxt-link to="/user/register">
+      <v-btn class="login-button" color="#E0E0E0" light small>
+        Need an account? Register here!
+      </v-btn>
+    </nuxt-link>
   </v-container>
 </template>
 
@@ -73,7 +72,7 @@ export default {
 </script>
 
 <style scoped>
-form {
+.container {
   width: 100%;
   padding: 10%;
   background-color: white;
@@ -86,23 +85,4 @@ form {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/* .forgot-password {
-  height: 5vh;
-  margin-left: 11px;
-  margin-top: 12px;
-} */
-/* .sign-in-options {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-} */
-
-/* .v-btn__content {
-  font-size: 1rem;
-  color: black;
-}
-.nav-button {
-  width: 100%;
-} */
 </style>

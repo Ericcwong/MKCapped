@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="admin-container">
     <NavDrawer v-on:loadComponent="getComponent($event)" />
     <div class="admin-actions">
       <keep-alive>
@@ -48,15 +48,18 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.admin-container {
   display: flex;
   justify-content: space-evenly;
-  background: white;
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+  color: white;
   max-width: 100%;
   margin: 0;
+  height: 100vh;
 }
 .admin-actions {
   width: 100%;
-  height: 75%;
+  height: 100%;
 }
 </style>
