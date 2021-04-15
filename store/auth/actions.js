@@ -20,11 +20,11 @@ const actions = {
         .then((res) => {
           console.log(res.user)
           if (res.additionalUserInfo.isNewUser === true) {
-            const user = auth.currentUser
+            const user = this.$fire.auth.currentUser
             commit("updateUserStatus")
             this.$router.push("/user/login")
             return user.updateProfile({
-              displayName: payload.name,
+              displayName: payload.firstName,
             })
           }
         })
