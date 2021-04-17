@@ -1,55 +1,49 @@
 <template>
-  <v-card color="grey lighten-4" flat height="200px" tile>
-    <v-toolbar dense>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+  <nav>
+    <v-toolbar dark dense>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-toolbar-title> Admin Control Panel</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
     </v-toolbar>
-  </v-card>
-  <!-- <v-card height="500px" width="" class="mx-auto">
-    <v-toolbar height="100%">
-      <v-navigation-drawer>
-        <v-list-item>
-          <v-list-item-content>
-            <v-btn
-              ><v-list-item-title
-                class="title"
-                @click.prevent="loadComponent('')"
-              >
-                Admin Panel
-              </v-list-item-title></v-btn
+    <v-navigation-drawer
+      v-model="drawer"
+      clipped-left
+      class="gray accent-4"
+      dark
+      bottom
+      temporary
+      absolute
+    >
+      <v-list-item>
+        <v-list-item-content>
+          <v-btn
+            ><v-list-item-title
+              class="title"
+              @click.prevent="loadComponent('')"
             >
-          </v-list-item-content>
-        </v-list-item>
+              Admin Panel
+            </v-list-item-title></v-btn
+          >
+        </v-list-item-content>
+      </v-list-item>
 
-        <v-divider></v-divider>
+      <v-divider></v-divider>
 
-        <v-list dense nav>
+      <v-list dense nav>
+        <v-list-item-group>
           <v-list-item v-for="item in items" :key="item.title" link>
-            <v-btn
+            <v-list-item
               class="nav-items"
               @click.prevent="loadComponent(item.title)"
-              >{{ item.title }}</v-btn
-            >
+              >{{ item.title }}
+            </v-list-item>
           </v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-    </v-toolbar>
-  </v-card> -->
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+  </nav>
 </template>
 
 <script>
@@ -61,6 +55,7 @@ export default {
         { title: "Add Shop", icon: "mdi-account-box" },
         { title: "Make Admin", icon: "mdi-gavel" },
       ],
+      drawer: false,
     }
   },
   methods: {
@@ -73,7 +68,8 @@ export default {
 </script>
 
 <style scoped>
-button {
+nav {
   width: 100%;
+  height: 0%;
 }
 </style>

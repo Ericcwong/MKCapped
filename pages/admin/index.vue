@@ -1,9 +1,9 @@
 <template>
   <v-container class="admin-container">
-    <NavDrawer v-on:loadComponent="getComponent($event)" />
+    <NavDrawer v-on:loadComponent="getComponent($event)" /><br /><br />
     <div class="admin-actions">
       <keep-alive>
-        <component :is="userComponent"></component>
+        <component v-bind:is="userComponent"></component>
       </keep-alive>
     </div>
   </v-container>
@@ -50,16 +50,15 @@ export default {
 <style scoped>
 .admin-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  flex-wrap: wrap;
   background-color: #485461;
   background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
   color: white;
-  max-width: 100%;
-  margin: 0;
-  height: 100vh;
+  max-width: 100vw;
+  height: 100%;
 }
 .admin-actions {
   width: 100%;
-  height: 100%;
 }
 </style>

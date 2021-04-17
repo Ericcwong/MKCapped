@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <div>
     <div v-for="option in options" :key="option">
       <v-checkbox
         @click.prevent="selectedData"
@@ -8,7 +8,7 @@
         :value="option"
       ></v-checkbox>
     </div>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -37,9 +37,8 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 </style>
