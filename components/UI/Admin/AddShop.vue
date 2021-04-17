@@ -1,28 +1,26 @@
 <template>
-  <div>
-    <v-card>
+  <v-container fluid>
+    <v-card elevation="10">
       <form>
         <v-card-title>Add a store!</v-card-title>
-        <div class="storeName">
-          <label for="storeName">Store Name:</label>
-          <input v-model="storeName" type="text" id="storeName" />
-        </div>
-        <div class="storeLogo">
-          <label for="storeLogo">Store Logo:</label>
-          <input v-model="storeLogo" type="text" id="storeLogo" />
-        </div>
-        <div class="storeURL">
-          <label for="storeURL">Store Url:</label>
-          <input v-model="storeURL" type="text" id="storeURL" />
-        </div>
-        <div class="storeDescription">
-          <label for="storeDescription">Store Description:</label><br />
-          <textarea
-            name="storeDescription"
-            id=""
-            cols="30"
-            rows="10"
-          ></textarea>
+        <v-divider></v-divider>
+        <div class="input-section">
+          <div class="storeName">
+            <label for="storeName">Store Name:</label>
+            <input v-model="storeName" type="text" id="storeName" />
+          </div>
+          <div class="storeLogo">
+            <label for="storeLogo">Store Logo:</label>
+            <input v-model="storeLogo" type="text" id="storeLogo" />
+          </div>
+          <div class="storeURL">
+            <label for="storeURL">Store Url:</label><br />
+            <input v-model="storeURL" type="text" id="storeURL" />
+          </div>
+          <div class="storeDescription">
+            <label for="storeDescription">Store Description:</label><br />
+            <textarea v-model="storeDescription" id="" rows="3"></textarea>
+          </div>
         </div>
         <ShopOptions v-on:selectedData="getData($event)" />
         <v-btn @click.prevent="createShop">Create store</v-btn>
@@ -36,7 +34,7 @@
       :storeURL="storeURL"
       :storeOptions="storeOptions"
     />
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -70,34 +68,30 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  justify-content: space-between;
   gap: 3rem;
-  width: 100%;
 }
-.v-card {
-  width: 50%;
+.input-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
 }
 form {
   display: inline;
   margin: 0 auto;
 }
 input[type="text"] {
-  border: 1px solid gray;
-  width: 100%;
+  border: 1px gray solid;
+  width: 85%;
   color: black;
 }
-.storeDescription * {
-  vertical-align: top;
-}
+
 textarea {
-  width: 100%;
-}
-.shop-cards {
-  height: 50%;
+  width: 85%;
+  border: 1px gray solid;
 }
 
 @media only screen and (max-width: 1345px) {
-  .test {
+  .container {
     display: inline;
   }
   .v-card {
