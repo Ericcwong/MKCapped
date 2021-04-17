@@ -52,8 +52,6 @@ export default {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: #485461;
-  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
   color: white;
   max-width: 100vw;
   height: 100%;
