@@ -1,4 +1,5 @@
 const actions = {
+  //Create Shop
   async createShop({ commit }, payload) {
     const shopRef = this.$fire.firestore.collection("shops").doc()
     try {
@@ -15,7 +16,7 @@ const actions = {
     }
     alert("Success.")
   },
-
+  //Read Shop
   async loadShops({ commit }) {
     const shopRef = this.$fire.firestore.collection("shops")
     try {
@@ -27,7 +28,10 @@ const actions = {
       console.error(error)
     }
   },
-
+  //Update Shop
+  async updateShop({commit},payload){
+    
+  },
   //Delete shop
   async deleteShop({ commit, dispatch }, payload) {
     try {
