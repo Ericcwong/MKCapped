@@ -11,17 +11,19 @@
     </div>
     <div class="footer">
       <h5 class="footer-title">Store Offers:</h5>
-      <v-chip-group multiple active-class="primary--text">
+      <ul class="storeOptions">
+        <li v-for="option in storeOptions" :key="option">{{ option }}</li>
+      </ul>
+      <!-- <v-chip-group column active-class="primary--text">
         <v-card-actions v-for="option in storeOptions" :key="option">
           <v-chip>{{ option }}</v-chip>
         </v-card-actions>
-      </v-chip-group>
+      </v-chip-group> -->
       <v-card-actions>
         <v-btn text color="teal accent-4" @click="reveal = true">
           Learn More
         </v-btn>
-        <v-btn v-if="editStore" @click="editStore(id)">Edit Store</v-btn
-        >{{ id }}
+        <v-btn v-if="editStore" @click="editStore(id)">Edit Store</v-btn>
         <v-btn v-if="deleteStore" @click="deleteStore(id)">Delete Store</v-btn>
       </v-card-actions>
       <v-expand-transition>
@@ -70,7 +72,7 @@ export default {
 
 <style scoped>
 .v-card {
-  width: 600px;
+  width: 400px;
 }
 /* Card Header */
 .v-card-header {
@@ -83,9 +85,7 @@ export default {
   align-content: center;
 }
 /* Card Body */
-.storeLogo {
-  max-width: 100%;
-}
+
 /* Card Footer */
 .footer-title {
   border-top: 2px solid gray;
@@ -101,6 +101,11 @@ export default {
   background-color: gray; /* color of the scroll thumb */
   border-radius: 20px; /* roundness of the scroll thumb */
   /* border: 3px solid skyblue; creates padding around scroll thumb */
+}
+.storeOptions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style: none;
 }
 .v-card--reveal {
   bottom: 0;
