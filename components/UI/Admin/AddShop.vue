@@ -44,6 +44,7 @@ export default {
       storeName: "",
       storeLogo: "",
       storeURL: "",
+      storeDescription: "",
       storeOptions: null,
     }
   },
@@ -58,6 +59,7 @@ export default {
         storeName: this.storeName,
         storeLogo: this.storeLogo,
         storeURL: this.storeURL,
+        storeDescription: this.storeDescription,
         storeOptions: this.storeOptions,
       })
     },
