@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <ShopCards
       v-for="shop in shops"
       :key="shop.id"
@@ -12,7 +12,7 @@
       :editStore="editStore"
       :deleteStore="deleteStore"
     />
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -36,5 +36,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
 </style>
