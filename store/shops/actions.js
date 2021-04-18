@@ -29,8 +29,23 @@ const actions = {
     }
   },
   //Update Shop
-  async updateShop({commit},payload){
-    
+  async updateShop({ commit }, payload) {
+    const shopRef = this.$fire.firestore.collection("shops").doc(payload)
+    shopRef
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const data = doc.data()
+          console.log("Document data:", data)
+          commit("LOAD_SHOP_BY_ID", data)
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!")
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error)
+      })
   },
   //Delete shop
   async deleteShop({ commit, dispatch }, payload) {
