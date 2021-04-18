@@ -12,17 +12,26 @@
       :editStore="editStore"
       :deleteStore="deleteStore"
     />
+    <UpdateShop
+      :storeName="shop.storeName"
+      :storeLogo="shop.storeLogo"
+      :storeURL="shop.storeURL"
+      :storeOptions="shop.storeOptions"
+    />
   </v-container>
 </template>
 
 <script>
 export default {
-  created: function () {
+  created() {
     this.$store.dispatch("shops/loadShops")
   },
   computed: {
     shops() {
       return this.$store.state.shops.shops
+    },
+    shop() {
+      return this.$store.state.shops.shop
     },
   },
   methods: {
@@ -30,7 +39,7 @@ export default {
       this.$store.dispatch("shops/deleteShop", id)
     },
     editStore(id) {
-      console.log(id, "Edit function")
+      this.$store.dispatch("shops/updateShop", id)
     },
   },
 }
