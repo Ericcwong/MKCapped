@@ -3,6 +3,7 @@
     <div v-for="option in options" :key="option">
       <v-checkbox
         @click.prevent="selectedData"
+        multiple
         v-model="selected"
         :label="option"
         :value="option"
@@ -15,7 +16,7 @@
 export default {
   data() {
     return {
-      selected: [],
+      selected: this.select,
       options: [
         "Keyboards",
         "Switches",
@@ -32,6 +33,9 @@ export default {
     selectedData() {
       this.$emit("selectedData", this.selected)
     },
+  },
+  props: {
+    select: Array,
   },
 }
 </script>
