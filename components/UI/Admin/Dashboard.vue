@@ -38,7 +38,7 @@ export default {
     },
     updateShop(id) {
       this.$store.commit("shops/CLEAR_SHOP")
-      this.$store.dispatch("shops/updateShop", id)
+      this.$store.dispatch("shops/retrieveShopData", id)
     },
   },
 }
