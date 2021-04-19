@@ -23,7 +23,7 @@
         <v-btn text color="teal accent-4" @click="reveal = true">
           Learn More
         </v-btn>
-        <v-btn v-if="editStore" @click="editStore(id)">Edit Store</v-btn>
+        <v-btn v-if="updateShop" @click="updateShop(id)">Edit Store</v-btn>
         <v-btn v-if="deleteStore" @click="deleteStore(id)">Delete Store</v-btn>
       </v-card-actions>
       <v-expand-transition>
@@ -59,7 +59,7 @@ export default {
     storeLogo: String,
     storeURL: String,
     storeOptions: Array,
-    editStore: Function,
+    updateShop: Function,
     deleteStore: Function,
   },
   data() {
