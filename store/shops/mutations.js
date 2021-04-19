@@ -1,4 +1,6 @@
+import { updateField } from 'vuex-map-fields';
 const mutations = {
+  updateField,
   LOAD_SHOPS(state, payload) {
     state.shops = payload
   },
