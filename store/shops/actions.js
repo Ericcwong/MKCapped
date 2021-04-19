@@ -29,7 +29,7 @@ const actions = {
     }
   },
   //Update Shop
-  async updateShop({ commit }, payload) {
+  async retrieveShopData({ commit }, payload) {
     const shopRef = this.$fire.firestore.collection("shops").doc(payload)
     shopRef
       .get()
@@ -46,6 +46,22 @@ const actions = {
       .catch((error) => {
         console.log("Error getting document:", error)
       })
+  },
+  async updateShopData({commit}, payload){
+    const shopRef = this.$fire.firestore.collection("shops").doc(payload.shopID)
+    try
+    {await shopRef.update({
+      id: payload.shopID,
+      storeName: payload.shopName,
+      storeLogo: payload.shopLogo,
+      storeURL: payload.shopURL,
+      storeOptions: payload.shopOptions,
+    })
+    console.log("Page updated")
+  }catch(error){
+    console.error(error)
+  }
+
   },
   //Delete shop
   async deleteShop({ commit, dispatch }, payload) {
