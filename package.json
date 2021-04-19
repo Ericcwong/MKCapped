@@ -20,7 +20,8 @@
     "firebase": "^8.2.9",
     "firebase-admin": "^9.5.0",
     "nuxt": "^2.14.6",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "vuex-map-fields": "^1.4.1"
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.0.0",
