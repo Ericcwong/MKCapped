@@ -9,19 +9,16 @@
       :storeLogo="shop.storeLogo"
       :storeURL="shop.storeURL"
       :storeOptions="shop.storeOptions"
-      :editStore="editStore"
+      :updateShop="updateShop"
       :deleteStore="deleteStore"
     />
-    <UpdateShop
-      :storeName="shop.storeName"
-      :storeLogo="shop.storeLogo"
-      :storeURL="shop.storeURL"
-      :storeOptions="shop.storeOptions"
-    />
+
+    <component :is="updateComponent"></component>
   </v-container>
 </template>
 
 <script>
+const UpdateShop = () => import("~/components/UI/Admin/UpdateShop")
 export default {
   created() {
     this.$store.dispatch("shops/loadShops")
@@ -30,15 +27,17 @@ export default {
     shops() {
       return this.$store.state.shops.shops
     },
-    shop() {
-      return this.$store.state.shops.shop
+    updateComponent() {
+      const shop = this.$store.state.shops.shop
+      if (shop !== null) return UpdateShop
     },
   },
   methods: {
     deleteStore(id) {
       this.$store.dispatch("shops/deleteShop", id)
     },
-    editStore(id) {
+    updateShop(id) {
+      this.$store.commit("shops/CLEAR_SHOP")
       this.$store.dispatch("shops/updateShop", id)
     },
   },
