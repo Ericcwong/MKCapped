@@ -5,6 +5,9 @@ const mutations = {
   LOAD_SHOP_BY_ID(state, payload) {
     state.shop = payload
   },
+  CLEAR_SHOP(state){
+    state.shop = null
+  }
 }
 
 export default mutations
