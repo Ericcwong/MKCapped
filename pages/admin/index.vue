@@ -15,7 +15,7 @@ const Home = () => import("~/components/UI/Admin/Home")
 const Dashboard = () => import("~/components/UI/Admin/Dashboard")
 const AddShop = () => import("~/components/UI/Admin/AddShop")
 const MakeAdmin = () => import("~/components/UI/Admin/MakeAdmin")
-const UpdateShop = () => import("~/components/UI/Admin/UpdateShop")
+
 export default {
   middleware({ store, redirect }) {
     const user = store.state.auth.user
