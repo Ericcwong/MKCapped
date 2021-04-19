@@ -14,7 +14,7 @@
           <v-toolbar-title>Settings</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark text @click="dialog = false"> Save </v-btn>
+            <v-btn dark text @click="updateShopData"> Save </v-btn>
           </v-toolbar-items>
         </v-toolbar>
         <form>
@@ -23,42 +23,46 @@
           <div class="input-section">
             <div class="storeName">
               <label for="storeName">Shop Name: </label><br />
-              <input v-model="shop.storeName" type="text" id="storeName" />
+              <input v-model="shopName" type="text" id="storeName" />
             </div>
             <div class="storeLogo">
               <label for="storeLogo">Store Logo: </label><br />
-              <input v-model="shop.storeLogo" type="text" id="storeLogo" />
+              <input v-model="shopLogo" type="text" id="storeLogo" />
             </div>
             <div class="storeURL">
               <label for="storeURL">Store URL:</label><br />
-              <input v-model="shop.storeURL" type="text" id="storeURL" />
+              <input v-model="shopURL" type="text" id="storeURL" />
             </div>
             <div class="storeDescription">
               <label for="storeDescription">Shop Description: </label><br />
-              <textarea
-                v-model="shop.storeDescription"
-                id=""
-                rows="3"
-              ></textarea>
+              <textarea v-model="shopDescription" id="" rows="3"></textarea>
             </div>
-            <ShopOptions :select="shop.storeOptions" />
+            <ShopOptions
+              v-on:selectedData="getData($event)"
+              :select="shopOptions"
+            />
           </div>
-          <v-btn @click.prevent="">Update store</v-btn>
         </form>
       </v-card>
       <ShopCards
-        v-if="shop.storeName || shop.storeLogo || shop.storeURL !== ''"
+        v-if="shopName || shopLogo || shopURL !== ''"
         class="shop-cards"
-        :storeName="shop.storeName"
-        :storeLogo="shop.storeLogo"
-        :storeURL="shop.storeURL"
-        :storeOptions="shop.storeOptions"
+        :storeName="shopName"
+        :storeLogo="shopLogo"
+        :storeURL="shopURL"
+        :storeOptions="shopOptions"
       />
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+//vuex-map-fields help eliminate the set and get function. Reducing the lines of codes needed
+import { createHelpers } from "vuex-map-fields"
+const { mapFields } = createHelpers({
+  getterType: "shops/getField",
+  mutationType: "shops/updateField",
+})
 export default {
   data() {
     return {
@@ -69,8 +73,30 @@ export default {
     }
   },
   computed: {
-    shop() {
-      return this.$store.state.shops.shop
+    //Renaming objects
+    ...mapFields({
+      shopID: "shop.id",
+      shopName: "shop.storeName",
+      shopLogo: "shop.storeLogo",
+      shopURL: "shop.storeURL",
+      shopDescription: "shop.storeDescription",
+      shopOptions: "shop.storeOptions",
+    }),
+  },
+  methods: {
+    updateShopData() {
+      this.$store.dispatch("shops/updateShopData", {
+        shopID: this.shopID,
+        shopName: this.shopName,
+        shopLogo: this.shopLogo,
+        shopURL: this.shopURL,
+        shopDescription: this.shopDescription,
+        shopOptions: this.shopOptions,
+      })
+      this.$store.commit("shops/CLEAR_SHOP")
+    },
+    getData(value) {
+      this.shopOptions = value
     },
   },
 }
