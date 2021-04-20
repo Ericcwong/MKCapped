@@ -35,6 +35,7 @@ export default {
   methods: {
     deleteStore(id) {
       this.$store.dispatch("shops/deleteShop", id)
+      this.$store.dispatch("shops/loadShops")
     },
     updateShop(id) {
       this.$store.commit("shops/CLEAR_SHOP")
@@ -48,6 +49,7 @@ export default {
 .container {
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
   justify-content: space-evenly;
 }
 </style>
