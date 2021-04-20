@@ -1,17 +1,13 @@
 <template>
-  <div>
-    <v-card elevation="2" outlined>
-      <v-card-title>Make an Admin</v-card-title>
-      <v-card-text
-        >Enter the email address you want admin
-        <input type="email" placeholder="Email" v-model="adminEmail" />
-      </v-card-text>
-      <v-card-actions>
-        <v-btn color="deep-purple lighten-2" text @click="addAdmin">
-          Make Admin
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+  <div class="text-center">
+    <h1>Enter the email address you want admin</h1>
+    <form @keyup.enter="addAdmin">
+      <input type="email" placeholder="Email" v-model="adminEmail" />
+    </form>
+    <v-btn class="ma-2" outlined color="white" @click="addAdmin"
+      >Make Admin
+    </v-btn>
+    <h3 v-if="results !== ''">{{ results }}</h3>
   </div>
 </template>
 
@@ -20,15 +16,18 @@ export default {
   data() {
     return {
       adminEmail: "",
+      results: "",
     }
   },
   methods: {
     addAdmin() {
       const adminForm = this.adminEmail
       const addAdminRole = this.$fire.functions.httpsCallable("addAdminRole")
-      addAdminRole({ email: adminForm }).then((results) => {
-        console.log(results)
-      })
+      try {
+        addAdminRole({ email: adminForm })
+      } catch (error) {
+        console.log(error)
+      }
     },
   },
 }
@@ -41,5 +40,6 @@ div {
 }
 input {
   border: 1px solid gray;
+  color: white;
 }
 </style>
