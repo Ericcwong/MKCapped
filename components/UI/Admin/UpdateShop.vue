@@ -94,6 +94,7 @@ export default {
         shopOptions: this.shopOptions,
       })
       this.$store.commit("shops/CLEAR_SHOP")
+      this.$store.dispatch("shops/loadShops")
     },
     getData(value) {
       this.shopOptions = value
