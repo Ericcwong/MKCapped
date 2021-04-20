@@ -2,9 +2,7 @@
   <nav>
     <v-toolbar dark dense>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
       <v-toolbar-title> Admin Control Panel</v-toolbar-title>
-
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-navigation-drawer

@@ -2,9 +2,7 @@
   <v-container class="admin-container">
     <NavDrawer v-on:loadComponent="getComponent($event)" /><br /><br />
     <div class="admin-actions">
-      <keep-alive>
-        <component v-bind:is="userComponent"></component>
-      </keep-alive>
+      <component v-bind:is="userComponent"></component>
     </div>
   </v-container>
 </template>
