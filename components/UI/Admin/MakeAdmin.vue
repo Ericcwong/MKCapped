@@ -7,7 +7,8 @@
     <v-btn class="ma-2" outlined color="white" @click="addAdmin"
       >Make Admin
     </v-btn>
-    <h3 v-if="results !== ''">{{ results }}</h3>
+    <h3 class="successCode" v-if="results !== ''">{{ results }}</h3>
+    <h3 class="errorCode" v-else-if="error !== null">{{ error }}</h3>
   </div>
 </template>
 
@@ -17,17 +18,23 @@ export default {
     return {
       adminEmail: "",
       results: "",
+      error: null,
     }
   },
   methods: {
     addAdmin() {
       const adminForm = this.adminEmail
       const addAdminRole = this.$fire.functions.httpsCallable("addAdminRole")
-      try {
-        addAdminRole({ email: adminForm })
-      } catch (error) {
-        console.log(error)
-      }
+      addAdminRole({ email: adminForm }).then((res) => {
+        console.log(res)
+        if (res.data.message) {
+          let result = res.data.message
+          this.results = result
+        } else if (res.data.errorInfo) {
+          let error = res.data.errorInfo.message
+          this.error = error
+        }
+      })
     },
   },
 }
@@ -41,5 +48,11 @@ div {
 input {
   border: 1px solid gray;
   color: white;
+}
+.successCode {
+  color: rgb(0, 236, 0);
+}
+.errorCode {
+  color: orangered;
 }
 </style>
