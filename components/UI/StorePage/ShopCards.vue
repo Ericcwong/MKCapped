@@ -1,30 +1,25 @@
 <template>
   <v-card class="v-card">
     <div class="v-card-header">
-      <v-card-title class="title">{{ storeName }}</v-card-title>
-      <a class="storeURL" :href="storeURL" target="_blank"
+      <v-card-title class="title">{{ shopName }}</v-card-title>
+      <a class="shopURL" :href="shopURL" target="_blank"
         ><v-card-title>Link</v-card-title></a
       >
     </div>
     <div class="v-card-body">
-      <a :href="storeURL"><v-img class="storeLogo" :src="storeLogo" /></a>
+      <a :href="shopURL"><v-img class="shopLogo" :src="shopLogo" /></a>
     </div>
     <div class="footer">
-      <h5 class="footer-title">Store Offers:</h5>
-      <ul class="storeOptions">
-        <li v-for="option in storeOptions" :key="option">{{ option }}</li>
+      <h5 class="footer-title">shop Offers:</h5>
+      <ul class="shopOptions">
+        <li v-for="option in shopOptions" :key="option">{{ option }}</li>
       </ul>
-      <!-- <v-chip-group column active-class="primary--text">
-        <v-card-actions v-for="option in storeOptions" :key="option">
-          <v-chip>{{ option }}</v-chip>
-        </v-card-actions>
-      </v-chip-group> -->
       <v-card-actions>
         <v-btn text color="teal accent-4" @click="reveal = true">
           Learn More
         </v-btn>
-        <v-btn v-if="updateShop" @click="updateShop(id)">Edit Store</v-btn>
-        <v-btn v-if="deleteStore" @click="deleteStore(id)">Delete Store</v-btn>
+        <v-btn v-if="updateShop" @click="updateShop(id)">Edit shop</v-btn>
+        <v-btn v-if="deleteshop" @click="deleteshop(id)">Delete shop</v-btn>
       </v-card-actions>
       <v-expand-transition>
         <v-card
@@ -33,11 +28,9 @@
           style="height: 100%"
         >
           <v-card-text class="pb-0">
-            <p class="display-1 text--primary">{{ storeName }}</p>
+            <p class="display-1 text--primary">{{ shopName }}</p>
             <p>
-              late 16th century (as a noun denoting a place where alms were
-              distributed): from medieval Latin eleemosynarius, from late Latin
-              eleemosyna ‘alms’, from Greek eleēmosunē ‘compassion’
+              {{ description }}
             </p>
           </v-card-text>
           <v-card-actions class="pt-0">
@@ -55,12 +48,13 @@
 export default {
   props: {
     id: String,
-    storeName: String,
-    storeLogo: String,
-    storeURL: String,
-    storeOptions: Array,
+    shopName: String,
+    shopLogo: String,
+    shopURL: String,
+    shopDescription: String,
+    shopOptions: Array,
     updateShop: Function,
-    deleteStore: Function,
+    deleteshop: Function,
   },
   data() {
     return {
@@ -79,7 +73,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.storeURL {
+.shopURL {
   vertical-align: center;
   justify-content: center;
   align-content: center;
@@ -102,7 +96,7 @@ export default {
   border-radius: 20px; /* roundness of the scroll thumb */
   /* border: 3px solid skyblue; creates padding around scroll thumb */
 }
-.storeOptions {
+.shopOptions {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   list-style: none;
