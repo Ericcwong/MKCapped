@@ -18,23 +18,23 @@
           </v-toolbar-items>
         </v-toolbar>
         <form>
-          <v-card-title>Edit store!</v-card-title>
+          <v-card-title>Edit shop!</v-card-title>
           <v-divider></v-divider>
           <div class="input-section">
-            <div class="storeName">
-              <label for="storeName">Shop Name: </label><br />
-              <input v-model="shopName" type="text" id="storeName" />
+            <div class="shopName">
+              <label for="shopName">Shop Name: </label><br />
+              <input v-model="shopName" type="text" id="shopName" />
             </div>
-            <div class="storeLogo">
-              <label for="storeLogo">Store Logo: </label><br />
-              <input v-model="shopLogo" type="text" id="storeLogo" />
+            <div class="shopLogo">
+              <label for="shopLogo">shop Logo: </label><br />
+              <input v-model="shopLogo" type="text" id="shopLogo" />
             </div>
-            <div class="storeURL">
-              <label for="storeURL">Store URL:</label><br />
-              <input v-model="shopURL" type="text" id="storeURL" />
+            <div class="shopURL">
+              <label for="shopURL">shop URL:</label><br />
+              <input v-model="shopURL" type="text" id="shopURL" />
             </div>
-            <div class="storeDescription">
-              <label for="storeDescription">Shop Description: </label><br />
+            <div class="shopDescription">
+              <label for="shopDescription">Shop Description: </label><br />
               <textarea v-model="shopDescription" id="" rows="3"></textarea>
             </div>
             <ShopOptions
@@ -47,10 +47,10 @@
       <ShopCards
         v-if="shopName || shopLogo || shopURL !== ''"
         class="shop-cards"
-        :storeName="shopName"
-        :storeLogo="shopLogo"
-        :storeURL="shopURL"
-        :storeOptions="shopOptions"
+        :shopName="shopName"
+        :shopLogo="shopLogo"
+        :shopURL="shopURL"
+        :shopOptions="shopOptions"
       />
     </v-card>
   </v-dialog>
@@ -76,11 +76,11 @@ export default {
     //Renaming objects
     ...mapFields({
       shopID: "shop.id",
-      shopName: "shop.storeName",
-      shopLogo: "shop.storeLogo",
-      shopURL: "shop.storeURL",
-      shopDescription: "shop.storeDescription",
-      shopOptions: "shop.storeOptions",
+      shopName: "shop.shopName",
+      shopLogo: "shop.shopLogo",
+      shopURL: "shop.shopURL",
+      shopDescription: "shop.shopDescription",
+      shopOptions: "shop.shopOptions",
     }),
   },
   methods: {
