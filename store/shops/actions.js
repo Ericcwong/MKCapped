@@ -5,10 +5,10 @@ const actions = {
     try {
       await shopRef.set({
         id: shopRef.id,
-        storeName: payload.storeName,
-        storeLogo: payload.storeLogo,
-        storeURL: payload.storeURL,
-        storeOptions: payload.storeOptions,
+        shopName: payload.shopName,
+        shopLogo: payload.shopLogo,
+        shopURL: payload.shopURL,
+        shopOptions: payload.shopOptions,
       })
     } catch (e) {
       alert(e)
@@ -52,10 +52,10 @@ const actions = {
     try
     {await shopRef.update({
       id: payload.shopID,
-      storeName: payload.shopName,
-      storeLogo: payload.shopLogo,
-      storeURL: payload.shopURL,
-      storeOptions: payload.shopOptions,
+      shopName: payload.shopName,
+      shopLogo: payload.shopLogo,
+      shopURL: payload.shopURL,
+      shopOptions: payload.shopOptions,
     })
     console.log("Page updated")
   }catch(error){
