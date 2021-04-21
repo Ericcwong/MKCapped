@@ -4,10 +4,10 @@
       v-for="shop in shops"
       :key="shop.id"
       class="shop-cards"
-      :storeName="shop.storeName"
-      :storeLogo="shop.storeLogo"
-      :storeURL="shop.storeURL"
-      :storeOptions="shop.storeOptions"
+      :shopName="shop.shopName"
+      :shopLogo="shop.shopLogo"
+      :shopURL="shop.shopURL"
+      :shopOptions="shop.shopOptions"
     />
   </div>
 </template>
