@@ -5,12 +5,12 @@
       :key="shop.id"
       :id="shop.id"
       class="shop-cards"
-      :storeName="shop.storeName"
-      :storeLogo="shop.storeLogo"
-      :storeURL="shop.storeURL"
-      :storeOptions="shop.storeOptions"
+      :shopName="shop.shopName"
+      :shopLogo="shop.shopLogo"
+      :shopURL="shop.shopURL"
+      :shopOptions="shop.shopOptions"
       :updateShop="updateShop"
-      :deleteStore="deleteStore"
+      :deleteshop="deleteshop"
     />
 
     <component :is="updateComponent"></component>
@@ -33,7 +33,7 @@ export default {
     },
   },
   methods: {
-    deleteStore(id) {
+    deleteshop(id) {
       this.$store.dispatch("shops/deleteShop", id)
       this.$store.dispatch("shops/loadShops")
     },
