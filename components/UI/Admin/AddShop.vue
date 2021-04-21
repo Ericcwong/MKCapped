@@ -2,37 +2,37 @@
   <v-container fluid>
     <v-card elevation="10">
       <form>
-        <v-card-title>Add a store!</v-card-title>
+        <v-card-title>Add a shop!</v-card-title>
         <v-divider></v-divider>
         <div class="input-section">
-          <div class="storeName">
-            <label for="storeName">Store Name:</label>
-            <input v-model="storeName" type="text" id="storeName" />
+          <div class="shopName">
+            <label for="shopName">shop Name:</label>
+            <input v-model="shopName" type="text" id="shopName" />
           </div>
-          <div class="storeLogo">
-            <label for="storeLogo">Store Logo:</label>
-            <input v-model="storeLogo" type="text" id="storeLogo" />
+          <div class="shopLogo">
+            <label for="shopLogo">shop Logo:</label>
+            <input v-model="shopLogo" type="text" id="shopLogo" />
           </div>
-          <div class="storeURL">
-            <label for="storeURL">Store Url:</label><br />
-            <input v-model="storeURL" type="text" id="storeURL" />
+          <div class="shopURL">
+            <label for="shopURL">shop Url:</label><br />
+            <input v-model="shopURL" type="text" id="shopURL" />
           </div>
-          <div class="storeDescription">
-            <label for="storeDescription">Store Description:</label><br />
-            <textarea v-model="storeDescription" id="" rows="3"></textarea>
+          <div class="shopDescription">
+            <label for="shopDescription">shop Description:</label><br />
+            <textarea v-model="shopDescription" id="" rows="3"></textarea>
           </div>
         </div>
         <ShopOptions v-on:selectedData="getData($event)" />
-        <v-btn @click.prevent="createShop">Create store</v-btn>
+        <v-btn @click.prevent="createShop">Create shop</v-btn>
       </form>
     </v-card>
     <ShopCards
-      v-if="storeName || storeLogo || storeURL !== ''"
+      v-if="shopName || shopLogo || shopURL !== ''"
       class="shop-cards"
-      :storeName="storeName"
-      :storeLogo="storeLogo"
-      :storeURL="storeURL"
-      :storeOptions="storeOptions"
+      :shopName="shopName"
+      :shopLogo="shopLogo"
+      :shopURL="shopURL"
+      :shopOptions="shopOptions"
     />
   </v-container>
 </template>
@@ -41,26 +41,26 @@
 export default {
   data() {
     return {
-      storeName: "",
-      storeLogo: "",
-      storeURL: "",
-      storeDescription: "",
-      storeOptions: null,
+      shopName: "",
+      shopLogo: "",
+      shopURL: "",
+      shopDescription: "",
+      shopOptions: null,
     }
   },
   methods: {
     getData(value) {
-      this.storeOptions = value
+      this.shopOptions = value
     },
     createShop() {
-      console.log(this.storeName, this.storeLogo, this.storeURL)
-      console.log(this.storeOptions)
+      console.log(this.shopName, this.shopLogo, this.shopURL)
+      console.log(this.shopOptions)
       this.$store.dispatch("shops/createShop", {
-        storeName: this.storeName,
-        storeLogo: this.storeLogo,
-        storeURL: this.storeURL,
-        storeDescription: this.storeDescription,
-        storeOptions: this.storeOptions,
+        shopName: this.shopName,
+        shopLogo: this.shopLogo,
+        shopURL: this.shopURL,
+        shopDescription: this.shopDescription,
+        shopOptions: this.shopOptions,
       })
     },
   },
