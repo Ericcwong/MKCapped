@@ -63,6 +63,7 @@ export default {
             enablePersistence: true
           },
           functions: true,
+          storage: true
         }
       }
     ]
