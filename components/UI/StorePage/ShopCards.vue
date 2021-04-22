@@ -1,5 +1,5 @@
 <template>
-  <v-card class="v-card">
+  <v-card class="v-card" width="350px">
     <div class="v-card-header">
       <v-card-title class="title">{{ shopName }}</v-card-title>
       <a class="shopURL" :href="shopURL" target="_blank"
@@ -7,10 +7,12 @@
       >
     </div>
     <div class="v-card-body">
-      <a :href="shopURL"><v-img class="shopLogo" :src="shopLogo" /></a>
+      <a :href="shopURL"
+        ><v-img contain aspect-ratio="2" class="shopLogo" :src="shopLogo"
+      /></a>
     </div>
     <div class="footer">
-      <h5 class="footer-title">shop Offers:</h5>
+      <h5 class="footer-title">Shop Offers:</h5>
       <ul class="shopOptions">
         <li v-for="option in shopOptions" :key="option">{{ option }}</li>
       </ul>
@@ -65,14 +67,12 @@ export default {
 </script>
 
 <style scoped>
-.v-card {
-  width: 400px;
-}
 /* Card Header */
 .v-card-header {
   display: flex;
   justify-content: space-between;
 }
+
 .shopURL {
   vertical-align: center;
   justify-content: center;
